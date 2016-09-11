@@ -1,0 +1,57 @@
+<!-- 
+        作者：dailc 
+        时间：2016-05-24
+        描述：使用示例 首页
+   本示例中,css一律采用link方式手动引入,js除了sea.js意外,全部动态引入
+  所有框架的工具类,统一使用别名方式引用
+  注意:不要重新再次定义base,要不然会有冲突
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<!--之所以在头部引入了js,是因为这个js是一个全局配置文件,通过这个js动态写入的js和css可以用来控制缓存是否过期
+			一般情况下,如果要考虑缓存,都要这么使用
+			下面那个通过write写入配置文件,保证每次配置文件都是最新的
+		-->
+		<script>
+			document.write("<script type='text/javascript' src='../js/core/RayApp/cacheControl.config.js?"+Math.random()+"'></scr"+"ipt>"); 
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/common/common_list.css',
+				'css/index.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<!-- 标题 -->
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<h1 id="title" class="mui-title">RayApp使用示例</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content" id="list-data">
+
+		</div>
+	</body>
+	<!-- 通用js,sea.min和sea.config基本是不会变的,所以可以不用考虑缓存
+		这里演示如果需要手动写入应该是一个怎么样的形式
+		首先必须用两个script标签,这样才能确保在第二个标签里面的 seajs 可以适应
+		正常情况下,这两个脚本应该是正常的script标签引用,不必考虑缓存问题
+		可以试下使下面注释的内容生效,并将下面两个script标签引入内容注释
+	-->
+	<!--<script src="../js/core/sea.min.js"></script>
+	<script src="../js/core/RayApp/sea.config.js" ></script>-->
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/index.js');
+	</script>
+
+</html>

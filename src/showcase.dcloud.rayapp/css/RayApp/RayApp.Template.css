@@ -1,0 +1,62 @@
+/**
+ * RayAPP中,webview模板页面css
+ * 模板页面主要用来优化程序
+ * @author dailc
+ */
+
+.mui-loader {
+	position: absolute;
+	top: 25%;
+	width: 100%;
+	height: 60%;
+	color: #888;
+	font-size: 14px;
+	text-align: center;
+}
+
+.mui-fadein {
+	opacity: 1;
+}
+
+.mui-fadeout {
+	opacity: 0;
+}
+.common-hidden {
+	display: none;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

@@ -1,0 +1,87 @@
+/**
+ * 3d动态相册
+ */
+
+/**
+ * 舞台
+ */
+.dynamic-gallery-state {
+	position: relative;
+	margin: 0 auto;
+	margin-top: 150px;
+	background: null;
+	-webkit-transform: rotateX(-10deg) rotateY(0deg) perspective(2000px);
+	-moz-transform: rotateX(-10deg) rotateY(0deg) perspective(2000px);
+	-ms-transform: rotateX(-10deg) rotateY(0deg) perspective(2000px);
+	-o-transform: rotateX(-10deg) rotateY(0deg) perspective(2000px);
+	transform: rotateX(-10deg) rotateY(0deg) perspective(2000px);
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d
+}
+
+/**
+ * 舞台中的阴影
+ */
+.dynamic-gallery-state .dynamic-gallery-shadow{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1200px;
+	height: 1200px;
+	margin-left: -600px;
+	margin-top: -600px;
+	background: -webkit-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+	background: -moz-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+	background: -ms-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+	background: -o-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+	background: radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+	-webkit-transform: translateY(200px) rotateX(90deg);
+	-moz-transform: translateY(200px) rotateX(90deg);
+	-ms-transform: translateY(200px) rotateX(90deg);
+	-o-transform: translateY(200px) rotateX(90deg);
+	transform: translateY(200px) rotateX(90deg)
+}
+
+/**
+ * 舞台内边
+ */
+.dynamic-gallery-state .dynamic-gallery-inner{
+	height: 300px;
+	width: 200px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 1px solid #666;
+	-webkit-transition: 500ms all ease;
+	-moz-transition: 500ms all ease;
+	-ms-transition: 500ms all ease;
+	-o-transition: 500ms all ease;
+	transition: 500ms all ease
+}
+
+/**
+ * 舞台外边
+ */
+.dynamic-gallery-state .dynamic-gallery-over{ 
+	position: absolute;
+	left: 0;
+	top: 320px;
+	width: 200px;
+	height: 300px;
+	overflow: hidden;
+	-webkit-transition: 2s all ease;
+	-moz-transition: 2s all ease;
+	-ms-transition: 2s all ease;
+	-o-transition: 2s all ease;
+	transition: 2s all ease;
+	-webkit-transform: scale(1, -1);
+	-moz-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	-o-transform: scale(1, -1);
+	transform: scale(1, -1);
+	background-size: 100% 100%;
+	opacity: 0
+}

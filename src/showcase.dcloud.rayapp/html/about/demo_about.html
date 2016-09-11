@@ -1,0 +1,57 @@
+<!-- 
+        作者：dailc 
+        时间：2016-05-24
+        描述： 说明页面
+    type="text/javascript"和	text/css 分别是js和css的默认属性
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/about/demo_about.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<!-- 标题 -->
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<h1 id="title" class="mui-title">关于</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		</header>
+		<div class="mui-content">
+			<div class="content-container">
+				<p>
+					RayApp是基于Dcloud进行移动跨平台开发的开发框架
+					<br /> 内部基于sea.js,模块化封装
+					<br /> 大部分API调用同时兼容H5+与h5
+					<br /> 兼容h5的肯定能兼容h5+
+					<br /> 初衷是提高开发效率,降低后期维护成本
+					<br /> 更多，请参考
+					<a href="">RayApp在线文档</a>
+					<br /> 或参考
+					<a href="http://dev.dcloud.net.cn/mui">Mui在线文档</a>
+				</p>
+			</div>
+
+			<span class="version">当前版本: V3.0.0</span>
+		</div>
+	</body>
+	<!-- 通用js -->
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/about/demo_about.js');
+	</script>
+
+</html>

@@ -1,0 +1,17 @@
+/**
+ * 图片轮播示例
+ */
+
+.mui-slider-indicator {
+	position: static;
+	background-color: #fff;
+}
+
+.hm-description {
+	margin: .5em 0 2em;
+}
+
+.hm-description>li {
+	font-size: 14px;
+	color: #8f8f94;
+}

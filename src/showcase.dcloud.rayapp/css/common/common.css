@@ -1,0 +1,134 @@
+/**
+ * 公用css
+ */
+
+body,
+.mui-content {
+	background-color: #FFFFFF;
+}
+
+
+/*重写头部导航栏bar背景色,颜色为 187bc2*/
+
+.mui-bar-nav {
+	background-color: #187bc2;
+	z-index: 20;
+}
+
+
+/*重写title的颜色,666666
+ title大小为18px*/
+
+.mui-title {
+	font-size: 18px;
+	color: #ffffff;
+}
+
+
+/*重写返回按钮颜色*/
+
+.mui-icon-left-nav {
+	color: #FFFFFF;
+}
+
+
+/*右侧的info图标*/
+
+.mui-icon-info-filled {
+	color: #FFFFFF;
+}
+
+
+/*右侧文字按钮白色*/
+
+.mui-bar-nav .mui-text-right {
+	color: #FFFFFF;
+}
+
+
+/*重写按钮*/
+
+.mui-btn-block {
+	height: 45px;
+	line-height: 45px;
+	padding: 0;
+}
+
+.common-hidden {
+	display: none;
+}
+
+
+/**
+ * 
+ */
+
+.tips-container {
+	width: 100%;
+	font-size: 15px;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+.compare-container {
+	width: 44%;
+}
+
+.tips-content {
+	display: block;
+	color: #007aff;
+}
+
+.show-img img {
+	width: 200px;
+	height: 200px;
+	border: 1px solid #FAFAFA;
+}
+
+.red {
+	color: red;
+}
+
+.f20 {
+	font-size: 20px;
+}
+
+.m50 {
+	margin-top: 50px;
+}
+
+.m15 {
+	margin: 15px;
+}
+
+.mt35 {
+	margin-top: 35px;
+}
+
+.mt50 {
+	margin-top: 50px;
+}
+
+.pt0,
+.mui-bar-nav~.pt0 {
+	padding-top: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+/**
+ * 最小化，变为1*1px挂在左上角
+ * 之所以要这样是，有些原生如果隐藏不见，无法触发事件
+ * 比如input file在4.x中隐藏不见无法触发click函数
+ */
+.minSize {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	opacity: 0;
+}

@@ -1,0 +1,54 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-05-25
+        描述：下载工具类相关-下载普通文件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">下载工具类</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<button class="mui-btn mui-btn-block " id="clearAllFileCache">清除所有下载缓存</button>
+			<button class="mui-btn mui-btn-block " id="clearTargetFileCache">清除目标文件的本地缓存</button>
+			<button class="mui-btn mui-btn-block " id="downloadTargetFileWithCache">本地缓存下载目标文件,并显示本地路径</button>
+			<button class="mui-btn mui-btn-block " id="downloadTargetFileNoCache">下载目标文件,不用缓存</button>
+			<div class="tips-container">
+				<span>目标文件下载路径:</span>
+				<span class="tips-content" id="netUrl">
+					http://218.25.201.22/aswmh/update/updateFiles/update.json
+				</span>
+				<span>下载后本地路径:</span>
+				<span class="tips-content" id="localUrl">
+				</span>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/download/demo_downloadTools_file.js');
+		</script>
+	</body>
+
+</html>

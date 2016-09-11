@@ -1,0 +1,84 @@
+<!-- 
+        作者：dailc
+        时间：2016-08-05
+        描述：微信网页授权-showcase
+-->
+<!DOCTYPE html >
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script>
+			//这是属于老版的缓存控制方案,后续的自定构建解决缓存也兼容这种模式,所以写法没问题
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			//支持项目相对路径和绝对路径
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/common/commonWeichat.css'
+			]);
+		</script>
+		<title>微信网页授权API</title>
+	</head>
+
+	<body>
+		<!-- 标题 -->
+		<header id="header" class="mui-bar mui-bar-nav ">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">微信网页授权API</h1>
+		</header>
+		<div class="mui-content">
+			<ul>
+				<li>
+					<a  >网页授权用户信息(包含nickName等)</a>
+					<ul>
+						<li>地址:<a target="_blank" href="http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthSysInfo.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html">http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthSysInfo.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html</a> </li>
+						<li class="green">注意:<span >这里identify没填,默认为公司服务号</span>,地址为该测试页的公网地址 </li>
+					</ul>
+				</li>
+				<li>
+					<a  >网页授权openId(只有openId)</a>
+					<ul>
+						<li>地址:<a target="_blank" href="http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthOpenId.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html">http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthOpenId.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html</a> </li>
+						
+					</ul>
+				</li>
+				<li>
+					<a  >企业号授权用户信息</a>
+					<ul>
+						<li>地址:<a target="_blank" href="http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthEnterprise.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html">http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthEnterprise.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html</a> </li>
+						<li class="green">注意:<span >这里identify没填,默认为公司企业号</span>,地址为该测试页的公网地址 </li>
+					</ul>
+				</li>
+				<li>
+					<a  >网页授权换取code(只有code和identify)</a>
+					<ul>
+						<li>地址:<a target="_blank" href="http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthCode.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html">http://app.epoint.com.cn/Epoint_Weichat_Platform/redirectToEpointWeichatOauthCode.do?targetUrl=http://app.epoint.com.cn/showcase.dcloud.rayapp/html/weichat/demo_weichat_oauth_simple.html</a> </li>
+						
+					</ul>
+				</li>
+				<li>
+					<a  >通过code获取用户信息接口(自行加上微信回调)</a>
+					<ul>
+						<li>地址:<a target="_blank" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc2b37ed7397251c7&redirect_uri=http%3A%2F%2Fapp.epoint.com.cn%2FEpoint_Weichat_Platform%2FcheckEpointWeichatOauthSysInfo.do%3FtargetUrl%3DTARGETURL&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect">https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc2b37ed7397251c7&redirect_uri=http%3A%2F%2Fapp.epoint.com.cn%2FEpoint_Weichat_Platform%2FcheckEpointWeichatOauthSysInfo.do%3FtargetUrl%3DTARGETURL&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect</a> </li>
+						<li class="green">注意:这里微信回调的地址是自己加上去的,这里用的是公司服务号的授权
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<!-- 通用seajs配置 -->
+	<script>
+		//将需要的配置文件进行封装函数,可以省去重复代码
+		//所有的seajs别名或者项目中bizlogic文件夹下的js都需要在seaBizConfig.js中设置别名,通过别名引用
+		//实际项目中请删除这些注释
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/weichat/demo_weichat_oauth_api.js');
+	</script>
+
+</html>

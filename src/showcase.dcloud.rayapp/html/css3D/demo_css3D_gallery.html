@@ -1,0 +1,56 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-09-07
+        描述：css 3D -照片墙
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/common/reset.css',
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/css3D/demo_css3D_gallery.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">CSS3D照片墙</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			
+			<div id="demoGallery" >
+				<div class="stage">
+					<div class="container">
+						<div class="example"></div>
+						<div class="example"></div>
+						<div class="example"></div>
+						<div class="example"></div>
+						<div class="example"></div>
+						<div class="example"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/css3D/demo_css3D_gallery.js');
+		</script>
+	</body>
+
+</html>

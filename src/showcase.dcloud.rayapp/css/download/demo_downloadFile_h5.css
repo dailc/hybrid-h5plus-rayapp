@@ -1,0 +1,32 @@
+/**
+ * h5文件下载相关
+ */
+
+/***************************附件模块************************/
+.attach-container {
+	margin-top: 15px;
+	border-top: 1px solid #e6e6e6;
+	padding-left: 10px;
+}
+/*附件item*/
+.attach-item {
+	height: 44px;
+	line-height: 44px;
+	overflow: hidden;
+}
+.not-last-item {
+	border-bottom: 1px solid #e6e6e6;
+}
+.attach-icon {
+	line-height: 44px;
+	color: #b7b7b7;
+}
+.attach-title {
+	font-size: 15px;
+	color: #666666;
+}
+.attach-download-icon {
+	line-height: 44px;
+	float: right;
+	color: #6096ff;
+}

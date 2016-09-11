@@ -1,0 +1,28 @@
+/**
+ * 关于页面
+ */
+
+/********************内容区域*********************/
+.content-container {
+	padding: 10px;
+}
+
+
+/*****************当前版本*****************/
+.version {
+	font-size: 9px;
+	/*绿色
+	 color: #48936f;
+	 background-color: #dfece7;
+	 * */
+	color: #00000;
+	background-color: #f5f5f5;
+	border-radius: 30px;
+	margin-bottom: 14px;
+	text-align: center;
+	display: block;
+	margin-left: 21%;
+	margin-right: 21%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

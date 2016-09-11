@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../js/libs/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="../js/libs/mui.min.js"></script>
+		<script>
+			(function(win) {
+				var testStr = 'weixin:111,weixinL222';
+				var arrayStr = testStr.split(',');
+				console.log("arrayStr:"+arrayStr);
+				var test = [{
+					url: 'url1', 
+					id: 'id1', 
+					styles: {
+						top: '45px', 
+						bottom: '0px' 
+					}
+				},{
+					url: 'url2', 
+					id: 'id2', 
+					styles: {
+						top: '45px', 
+						bottom: '0px' 
+					}
+				}];
+				console.log("test:" + JSON.stringify(test));
+				//var url = 'http://loongzone.xicp.net/STWebService/Service/TheCurriculum_GetDetail.ashx';
+				//var url = 'http://221.6.85.8/EpointOAWebServiceQYK/AuditCompany/GetCompanyDetail';
+				var url = 'http://218.4.136.123:8088/SZZJWebService/SZZJWebService/GetManagerBiaoDuanList';
+				var requestData = {};
+				//requestData.ValidateData = 'Epoint_WebSerivce_**##0601';
+				requestData.ValidateData = '2016-07-18';
+				//				requestData.paras = {
+				//					UserGuid: "9210edbb-b7fc-40c6-922a-1310fbf6859d",
+				//					SendDate: "2016-06-06 11:43"
+				//				};
+//				requestData.paras = {
+//					"CompanyGuid": "3c3e7079-15d4-49d9-ab6a-dd4a7e2d0661"
+//				};
+				requestData.paras = {"KeyWord":"","UserGuid":"","PageIndex":"1","PageSize":"2"};
+				//requestData = JSON.stringify(requestData);
+				//requestData.ValidateData = JSON.stringify(requestData.ValidateData);
+				//requestData.paras = JSON.stringify(requestData.paras);
+				requestData = JSON.stringify(requestData);
+				console.log("请求:" + requestData);
+				mui.ajax(url, {
+					data: requestData,
+					dataType: "json",
+					timeout: "15000", //超时时间设置为3秒；
+					type: "POST",
+					async: true,
+					success: function(response) {
+						console.log("success");
+						console.log(JSON.stringify(response));
+					},
+					error: function(error) {
+						console.log("error");
+						console.log(JSON.stringify(error))
+					}
+				});
+			})(window);
+		</script>
+	</body>
+
+</html>

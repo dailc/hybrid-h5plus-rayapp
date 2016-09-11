@@ -1,0 +1,84 @@
+/**
+ * 作者  dailc
+ * 日期  2016-07-20
+ * 简介  微信浏览器内通用
+ */
+
+/*非微信浏览器打开时*/
+.error-main {
+	margin: 50px auto 30px auto;
+    width: auto;
+    max-width: 500px;
+    text-align: center;
+    background: #fff;
+    border-top: 4px solid #6fd438;
+    padding: 66px 0 90px 0;
+}
+.error-qrcode {
+	margin: 0;
+    padding: 0;
+}
+.error-tips {
+	font-size: 16px;
+    color: #999;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 215px;
+    border-radius: 50px;
+    display: inline-block;
+    background: #f9f8f5;
+}
+/*利用mui已有图标*/
+.error-tips:before {
+	font-family: Muiicons;
+	content: "\e504";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    position: relative;
+    top: -12px;
+    margin-right: 4px;
+}
+.error-main .error-qrcode img {
+	max-width: 185px;
+    max-height: 185px;
+    display: block;
+    margin: 30px auto 27px auto;
+}
+.error-main h3 {
+	font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+.error-footer {
+	text-align: center;
+    margin-bottom: 30px;
+    color: #999;
+}
+
+
+.mui-content ul {
+	word-break: break-all;
+}
+.mui-content img {
+	max-width: 100%;
+}
+
+
+/**
+ * 测试jssdk页面
+ */
+#selectImg {
+	height: 40px;
+	line-height: 40px;
+	padding: 0;
+}
+.show-img img{
+	width: 80px;
+	height: 80px;
+}
+.compareResult{
+	word-break: break-all;
+}

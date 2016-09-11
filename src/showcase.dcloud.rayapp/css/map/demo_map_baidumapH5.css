@@ -1,0 +1,55 @@
+/**
+ * 百度h5地图
+ */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	position: absolute;
+	top: 45px;
+	height: 90%;
+	width: 100%;
+}
+
+.search {
+	position: absolute;
+	z-index: 99;
+	width: 70%;
+	height: 40px;
+	left: 15%;
+	top: 85px;
+	background: #C6C6C6;
+	color: #FFFFFF;
+}
+
+#search {
+	margin: 0;
+	padding: 0;
+	width: 70%;
+	height: 40px;
+	line-height: 40px;
+	color: #000000;
+	float: left;
+}
+
+.BMapLib_cityTab {
+	width: 54px;
+	background: #ff0;
+}
+
+.BMapLib_sc_t_b {
+	width: 65px;
+	background: #ff0;
+}
+
+#addbtn {
+	display: block;
+	float: left;
+	width: 30%;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}

@@ -1,0 +1,51 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-05-26
+        描述： 图片加载工具类相关 -本地缓存相关
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/common/common_list.css',
+				'../../css/imgOperation/demo_imageLoaderTools_localcache.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">图片本地缓存加载</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<button class="mui-btn mui-btn-block " id="clearAllImgCache">清除所有图片缓存</button>
+			<button class="mui-btn mui-btn-block " id="showAllImgWithCache">显示所有图片</button>
+			<button class="mui-btn mui-btn-block " id="clearFirstImgCache">清除第一张图片缓存</button>
+			<button class="mui-btn mui-btn-block " id="showFirstImgWithCache">显示第一张图片</button>
+			<button class="mui-btn mui-btn-block " id="lazyloadAllImg">懒加载所有图片</button>
+			<ul id="list" class="mui-table-view mui-table-view-chevron">
+
+			</ul>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/imgOperation/demo_imageLoaderTools_localcache.js');
+		</script>
+	</body>
+
+</html>

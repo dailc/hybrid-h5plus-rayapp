@@ -1,0 +1,57 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-06-02
+        描述：storage  storage工具类
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">Storage</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<button class="mui-btn mui-btn-block " id="addTestStorageItem">设置一个测试键值</button>
+			<button class="mui-btn mui-btn-block " id="getTestStorageItem">得到测试键值</button>
+			<button class="mui-btn mui-btn-block " id="deleteTestStorageItem">删除测试键值</button>
+			<button class="mui-btn mui-btn-block " id="deleteAllStorageItem">删除所有键值</button>
+			<button class="mui-btn mui-btn-block " id="deleteAllOfflineItem">清除所有离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="addTestOfflineItem">添加测试离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="deleteTestOfflineItem">删除测试离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="getTestOfflineItem">得到测试离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="IsHasTestOfflineItem">是否有测试离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="addTestListOfflineItem">添加测试列表离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="deleteTestListOfflineItem">删除测试列表离线缓存</button>
+			<button class="mui-btn mui-btn-block " id="getTestListOfflineItem">得到测试列表离线缓存</button>
+			<div id="outPut">
+				<h5>输出</h5>
+				<span id="result">无</span>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/storage/demo_storage_storageTools.js');
+		</script>
+	</body>
+
+</html>

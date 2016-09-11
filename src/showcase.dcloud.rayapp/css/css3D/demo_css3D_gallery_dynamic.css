@@ -1,0 +1,15 @@
+/**
+ * 3d动态相册示例
+ */
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+
+body {
+	overflow: hidden;
+	background: #000;
+}
+

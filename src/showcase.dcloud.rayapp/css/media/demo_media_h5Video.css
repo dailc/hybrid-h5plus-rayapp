@@ -1,0 +1,40 @@
+/**
+ * h5视频播放
+ */
+
+/**
+ * 设置一个边框与固定宽度
+ */
+#videoContainer {
+	border: 1px solid #000;
+	width: 360px;
+	max-width: 100%;
+}
+/**
+ * 控制视频本身
+ * 默认是 高度和宽度时1px,用来隐藏视频,用一张默认的图片替代视频
+ */
+#videoMedia {
+	margin-top: 0px;
+	width: 1px;
+	height:1px;
+}
+/**
+ * 默认图片和videoContainer保持宽高一致
+ */
+#videoContainer img{
+	width: 360px;
+	max-width: 100%;
+}
+#TypeSwitch{
+	margin-top: 10px;
+	border: 1px solid #3094D2;
+	width: 360px;
+	max-width: 100%;
+}
+.switchBtn{
+	margin: 10px;
+}
+.choosed{
+	border: 1px solid #B12D1E;
+}

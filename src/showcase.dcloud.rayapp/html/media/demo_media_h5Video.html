@@ -1,0 +1,62 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-06-02
+        描述：影音相关-h5video播放
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/media/demo_media_h5Video.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">H5Video播放</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<div id="videoContainer">
+				<!--
+                	让ios支持内联播放,必须添加 webkit-playsinline 标签
+                -->
+				<video webkit-playsinline id="videoMedia" controls="controls" preload>
+					<!--<source src="http://192.168.23.1:8088/Wildlife.mp4" type='video/mp4'>-->
+					<source src="http://1.rayproject.applinzi.com/staticResource/video/video_wildlife.mp4" type='video/mp4'>
+					<!--<source src="../../video/Wildlife.webm" type='video/webm'>	-->
+					<!--<source src="http://192.168.23.1:8088/Wildlife.mp4" type='video/mp4'>-->
+					<!--<source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>-->
+					<!--<source src="../video/Wildlife.mp4" type='video/mp4'>
+					<source src="../video/Wildlife.webm" type='video/webm'>-->
+					<!--http://192.168.23.1:8088/Wildlife.mp4-->
+					<p>浏览器不支持Html5 Video!</p>
+				</video>
+				<img id="videoMediaDefaultImg" src="../../img/media/img_clickToPlay.png" />
+			</div>
+			<div id="TypeSwitch">
+				<button id="inlinePlayBtn" class="switchBtn choosed">内敛播放</button>
+				<button id="noInlinePlayBtn" class="switchBtn ">非内联播放</button>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/media/demo_media_h5Video.js');
+		</script>
+	</body>
+
+</html>
