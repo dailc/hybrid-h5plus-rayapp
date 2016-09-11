@@ -1,6 +1,11 @@
 # rayapp
-Hybrid开发，基于h5+ API和mui前端框架，以及seajs模块化开发的一套开发框架。
-同时提供框架功能的示例showcase，以及提供基于本框架开发的一些典型项目示例。
-封装大量常用H5+功能,如5+下的download,upload,Storage,图片下载,下拉刷新,通知栏,版本更新等等
-同时也封住大量常用H5功能,如日期工具类,字符集工具类,B64的转换,md5加密,h5下拉刷新,图片轮播,H5Video,LocalStorage,IndexedDB等
-在使用 Dcloud公司的HTML5+方案开发跨平台APP的同学可别错过了噢!
+###Hybrid开发，基于h5+ API和mui前端框架，以及seajs模块化开发的一套开发框架。
+1,同时提供框架功能的示例showcase，以及提供基于本框架开发的一些典型项目示例。
+2.封装大量常用H5+功能,如5+下的download,upload,Storage,图片下载,下拉刷新,通知栏,版本更新等等
+3.同时也封住大量常用H5功能,如日期工具类,字符集工具类,B64的转换,md5加密,h5下拉刷新,图片轮播,H5Video,LocalStorage,IndexedDB等
+4.在使用 Dcloud公司的HTML5+方案开发跨平台APP的同学可别错过了噢!
+
+##关于自动构建
+1.本项目有自己定制gulpfile.js,通过使用gulp可以进行自动构建
+2.运行gulp default,可以将项目编译后输出到src同级的build目录下
+3.自动构建的内容包括资源压缩,静态资源文件MD5签名,代码压缩等等
