@@ -14,3 +14,5 @@
 ##特点
 1.跨平台,showcase的项目可以用浏览器访问，也可以通过Hbuild等打包工具打包生成Android,iOS APP  <br />
 2.大量实践,这个框架产生的目的本身就是为了更快的开发项目,基于这个框架实际开发上线的项目已经有不少了(2位数了...)  <br />
+3.附带在线文档,没有文档,就无从学习,本项目附带有详细的在线文档。目前地址为:
+[http://rayproject.applinzi.com/doc.web.crossPlatformGroup/html/frameworkDoc/index.html](http://rayproject.applinzi.com/doc.web.crossPlatformGroup/html/frameworkDoc/index.html)
