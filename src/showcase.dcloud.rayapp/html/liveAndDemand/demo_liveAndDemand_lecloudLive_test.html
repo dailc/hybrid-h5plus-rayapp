@@ -1,0 +1,34 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-07-11
+        描述：直播点播-乐视云直播
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<title>直播</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport">
+		<style type="text/css">
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="player" style="width:100%;height:450px;">
+			<script type="text/javascript" charset="utf-8" src="http://yuntv.letv.com/player/live/blive.js"></script>
+			<script>
+				var player = new CloudLivePlayer();
+				//activityId 请换成自己设置的获得id
+				player.init({
+					activityId: "A2016010500713"
+				});
+			</script>
+		</div>
+	</body>
+
+</html>

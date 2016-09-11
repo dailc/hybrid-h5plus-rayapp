@@ -1,0 +1,54 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-06-14
+        描述：其它工具-jsonView示例
+        基于开源项目  jQuery JSONView的修改,修改为mui形式
+        地址:https://github.com/yesmeck/jquery-jsonview
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>JSONView示例</title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">JSONView示例</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<h5>测试json数据:</h5>
+			<div id="testData">
+			</div>
+			<button class="mui-btn mui-btn-block" id="collapse-btn">Collapse</button>
+			<button class="mui-btn mui-btn-block" id="expand-btn">Expand</button>
+			<button class="mui-btn mui-btn-block" id="toggle-btn">Toggle</button>
+			<button class="mui-btn mui-btn-block" id="toggle-level1-btn">Toggle level1</button>
+			<button class="mui-btn mui-btn-block" id="toggle-level2-btn">Toggle level2</button>
+			<h5>最终输出数据:</h5>
+			<div id="json"></div>
+			<h5>Data Collapsed:<h5>
+  			<div id="json-collapsed"></div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/other/demo_other_jsonViewTools.js');
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,181 @@
+/**
+ * 接口测试页面
+ */
+
+.mui-content {
+	margin-top: 10px;
+}
+
+
+/*ajax区域*/
+
+.ajax-container {
+	width: 90%;
+	padding: 10px;
+	max-width: 1200px;
+	margin: auto;
+	border: 1px solid #4CD964;
+}
+
+
+/*重写select*/
+
+select {
+	height: auto;
+	margin-top: 1px;
+	border: 0!important;
+	background-color: #fff;
+	/*用来绘制右侧的按钮*/
+	-moz-appearance: menulist-button;
+	-webkit-appearance: menulist-button;
+	margin-top: 6px;
+	padding: 6px 15px;
+}
+
+
+/*请求类别选择*/
+
+.request-type-select {
+	max-width: 100px;
+}
+
+
+/*重写li*/
+
+li {
+	/*去除默认样式*/
+	list-style: none
+}
+
+input,
+textarea,
+select {
+	border: 1px solid #5f5f5f !important;
+}
+
+button {
+	padding: 2px;
+}
+
+.param-item,
+.header-item,
+.tips-item {
+	width: 100%;
+}
+
+
+/*json参数区域*/
+
+.param-json-container {
+	padding: 10px;
+	border: 1px solid #5f5f5f !important;
+}
+
+.mui-table-cell {
+	padding: 5px;
+}
+
+.btn {
+	color: white;
+	padding: 5px;
+}
+
+.btn-add-param {
+	background: #5589ab;
+}
+
+.btn-example {
+	background: #5589ab;
+}
+
+.btn-delete-param {
+	background: #e4572e;
+}
+
+.btn-add-param-batch {
+	background: #4daf7c;
+}
+
+.container-toggle {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+
+/*开始请求*/
+
+.request-start {
+	padding: 10px;
+}
+
+.btn-start-request {
+	margin-top: 5px;
+	background: #4daf7c;
+	width: 100%;
+}
+
+
+/*说明*/
+
+.tips-container {
+	padding: 10px;
+	border: 1px solid #5f5f5f !important;
+}
+
+
+/*提示*/
+
+.status-tips {
+	color: red;
+}
+
+.item-tips {
+	margin-top: 5px;
+	border: 1px solid red;
+	padding: 3px;
+}
+
+
+/***table****/
+
+.ajax-container .table {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	border-spacing: 0;
+	border-collapse: collapse;
+	text-align: left;
+	overflow: auto;
+	
+}
+
+.ajax-container .table-bordered {
+	border: 1px #CCC solid;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+tr {
+	width: 100%;
+	max-width: 100%;
+}
+thead {
+	width: 100%;
+	max-width: 100%;
+	background-color: #f3f3f3;
+}
+
+.table.table-bordered td,
+.table.table-bordered th {
+	border: 1px #CCC solid;
+}
+
+.table th,
+.table td {
+	width: 50%;
+	max-width: 50%;
+	padding: 8px 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

@@ -1,0 +1,63 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-06-08
+        描述：日期相关-日期工具类
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">日期操作</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<div id="Content">
+				<h5>输入时间1</h5>
+				<input type="text" id="testTime1" value="2016-01-01 01:02:03:000" />
+				<h5>选择时间2</h5>
+				<input type="text" id="testTime2" value="2016/01/01 01:03:04:000" />
+				<h5>匹配字符串(用来比较和获取开始时间,结束时间)</h5>
+				<input type="text" id="comparePattern" value="YYYY" />
+			</div>
+			<button class="mui-btn mui-btn-block " id="setTime2">设置时间2为2016年1月1日</button>
+			<button class="mui-btn mui-btn-block " id="printAllInfo">输出两个时间</button>
+			<button class="mui-btn mui-btn-block " id="date1Comparedate2">时间1和时间2比较</button>
+			<div id="outPut">
+				<h5>输出</h5>
+				<span>时间1:</span>
+				<span id="time1Out"></span>
+				<br />
+				<span>时间2:</span>
+				<span id="time2Out"></span>
+				<br />
+				<span>比较结果:</span>
+				<span id="compareResult">无</span>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/date/demo_date_dateTools.js');
+		</script>
+	</body>
+
+</html>

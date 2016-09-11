@@ -1,0 +1,167 @@
+<!-- 
+        作者：dailc
+        时间：2016-08-26 
+        描述：  测试的h5 file选择页面
+-->
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			img {
+				max-width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 
+		应该有三种类型: gallery,camera,both
+		分别是单独相册,单独摄像,两种选择
+		内部最后限制只能选择图片
+	-->
+		<input type="file" class="fileChoose" id="showFileChoose_image" accept="image/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_camera" accept="camera/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_file" accept="file/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_image_camera" accept="image_camera/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_image_file" accept="image_file/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_camera_file" accept="camera_file/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_all" accept="*/*" />
+		<input type="file" class="fileChoose" id="showFileChoose_default">
+		<img id="showImg" />
+		<script>
+			//初始化入口
+			window.onload = function() {
+				initListeners();
+			};
+
+			/**
+			 * @description 初始化监听
+			 */
+			function initListeners() {
+				//添加监听
+				var setFileDomListener = function(dom) {
+					dom.addEventListener('change', function() {
+						setSelectFilesFromwDisks(dom, function(b64, file) {
+							//解决android4.*图片的b64不对问题,如果没有图片,自动加上image/png
+							//						var testStr = b64.substring(0,30);
+							//						console.log("testStr:"+testStr);
+							//						if(testStr.indexOf('data:base64,')!==-1){
+							//							//android中的问题,需要修复
+							//							//去除字符串,然后新增在前面
+							//							console.log("修复android");
+							//							b64 = b64.replace('data:base64,','');
+							//							b64 = 'data:image/jpeg;base64,' + b64;
+							//						}
+							console.log("选择:" + b64);
+							console.log("fileName:" + file.name);
+							document.getElementById('showImg').setAttribute('src', b64);
+						});
+					});
+				};
+				
+				var fileArray = document.querySelectorAll('.fileChoose');
+				//fileArray是htmlCollection或者NodeList 但不是Array
+				if(fileArray){
+					for(var i=0,len=fileArray.length;i<len;i++){
+						setFileDomListener(fileArray[i]);
+					}
+				}
+				
+				
+
+			}
+			/**
+			 * @description 从磁盘中选择文件
+			 * @param {HTMLElement} dom
+			 * @param {Function} successCB
+			 */
+			function setSelectFilesFromwDisks(dom, successCB) {
+				var aFiles = dom.files;
+				var len = aFiles.length;
+				if(len === 0) {
+					console.error("错误,选择的文件数量为0");
+					return;
+				}
+				//定义文件读取器和后缀类型过滤器
+				var oFReader = new window.FileReader();
+				var index = 0;
+				//默认读取b64,如果不是图片,数据会很奇怪
+				var chainCall = function() {
+					if(index >= len) {
+						return;
+					}
+					loadDataFromFile(oFReader, aFiles[index], function(b64Src) {
+						successCB && successCB(b64Src, aFiles[index]);
+						index++;
+						chainCall();
+					}, 'DataUrl');
+				};
+				chainCall();
+			}
+			/**
+			 * @description 从一个file对象,加载对应的数据
+			 * FileReader的方法
+			 * 方法名 				参数				描述
+			 * readAsBinaryString 	file 			将文件读取为二进制编码
+			 * readAsText			file,[encoding] 将文件读取为文本
+			 * readAsDataURL		file			将文件读取为DataURL
+			 * abort				(none)			终端读取操作
+			 * @param {FileReader} oFReader 对应的加载器
+			 * @param {File} file 文件对象,选择的是img类型
+			 * @param {Function} successCB 成功加载完毕后的回调,回调result(不同的加载方式result类型不同)
+			 * @return {FileReader} 返回文件加载器对象
+			 * @param {String} type 类型,DataUrl还是Text还是Binary
+			 */
+			function loadDataFromFile(oFReader, file, successCB, type) {
+				if(window.FileReader || !oFReader || !(oFReader instanceof FileReader)) {
+					oFReader.onload = function(oFREvent) {
+						//解决DataUrl模式下的b64字符串不正确问题
+						console.log("数据:"+JSON.stringify(oFREvent.target));
+						var b64 = oFREvent.target.result;
+						if(type === 'DataUrl') {
+							//正常的图片应该是data:image/gif;data:image/png;;data:image/jpeg;data:image/x-icon;
+							//而在Android的一些5.0系统以下(如4.0)的设备中,有些返回的b64字符串缺少关键image/gif标识,所以需要手动加上
+							if(b64 && b64.indexOf('data:base64,') !== -1) {
+								//去除旧有的错误头部
+								b64 = b64.replace('data:base64,', '');
+								var dataType = '';
+								//文件名字
+								var name = file.name;
+								if(name && name.toLowerCase().indexOf('.jpg') !== -1) {
+									//jpeg
+									dataType = 'image/jpeg';
+								} else if(name && name.toLowerCase().indexOf('.png') !== -1) {
+									//png
+									dataType = 'image/png';
+								} else if(name && name.toLowerCase().indexOf('.gif') !== -1) {
+									//gif
+									dataType = 'image/gif';
+								} else if(name && name.toLowerCase().indexOf('.icon') !== -1) {
+									//x-icon
+									dataType = 'image/x-icon';
+								}
+								b64 = 'data:' + dataType + ';base64,' + b64;
+							}
+						}
+						successCB && successCB(b64);
+					};
+					if(type === 'DataUrl') {
+						oFReader.readAsDataURL(file);
+					} else if(type === 'Text') {
+						oFReader.readAsText(file);
+					} else {
+						oFReader.readAsBinaryString(file);
+					}
+					return oFReader;
+				} else {
+					console.error('错误:FileReader不存在!');
+				}
+			}
+		</script>
+	</body>
+
+</html>

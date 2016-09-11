@@ -1,0 +1,49 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-06-02
+        描述：图表相关-echart
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Echart</title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/echart/demo_echart_echartTools.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">Echart</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content" id="content">
+			<div class="mui-content-padded">
+				<p>【柱状图示例】</p>
+				<div class="echart_div" id="barChart"></div>
+				<p>【折线图示例】</p>
+				<div class="echart_div" id="lineChart"></div>
+				<p>【饼图示例】</p>
+				<div class="echart_div" id="pieChart"></div>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/echart/demo_echart_echartTools.js');
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!-- 
+        作者：dailc 
+        时间：2016-05-20
+        描述： 下拉刷新-通用子页面,里面进行皮肤切换
+         -通过回调来手动获取参数等
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/common/common_search.css',
+				'../../css/common/repailTopPocket45.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+
+		<!--下拉刷新容器
+				pullrefresh 和 listdata是下拉刷新组件默认的id
+				简单的调用没有必要修改,如果有自定义修改需求的,请参考详细调用
+			-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="common-input-row">
+				<div class="common-input common-search-container mui-search">
+					<span class="btn-search mui-icon mui-icon-search" id="searchBtn"></span>
+					<input type="text" class="common-input-clear" placeholder="请输入搜索关键字" id="input-searchName">
+				</div>
+			</div>
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view" id="listdata">
+
+				</ul>
+			</div>
+		</div>
+	</body>
+	<!-- 通用js -->
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/pullToRefresh/demo_pullRefresh_impl_list_custom.js');
+	</script>
+
+</html>

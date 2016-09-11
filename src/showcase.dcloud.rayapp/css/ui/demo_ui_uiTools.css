@@ -1,0 +1,13 @@
+/*
+ * ui里面的一些特殊样式
+ * @author dailc
+ */
+.ui-red{
+	/*直接这样是没法改变颜色的,会被mui自带样式覆盖,需要像下面一样来选择覆盖*/
+	color: #CF2D28;
+	font-size: 40px;
+}
+/*优先级最高的覆盖 actionSheet的a标签的颜色*/
+.mui-table-view-cell>a[class=ui-red]{
+	color: #CF2D28;
+}

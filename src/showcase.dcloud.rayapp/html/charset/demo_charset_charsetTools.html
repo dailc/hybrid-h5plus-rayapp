@@ -1,0 +1,55 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-06-08
+        描述：字符操作-字符集操作
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">字符集操作</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<h5>加密/解密测试:</h5>
+			<input type="text" id="enDecodeStr" value="你好世界!" />
+			<button class="mui-btn mui-btn-block " id="encodeb64GBK">base64GBK加密</button>
+			<button class="mui-btn mui-btn-block " id="decodeb64GBK">base64GBK解密</button>
+			<button class="mui-btn mui-btn-block " id="encodeb64UTF">base64UTF加密</button>
+			<button class="mui-btn mui-btn-block " id="decodeb64UTF">base64UTF解密</button>
+			<h5>测试字符串</h5>
+			<input type="text" id="testStr" value="Hello World! 你好,世界！ ~。！*)(;壹佰贰拾贰`丶‘.@/】o" />
+
+			<button class="mui-btn mui-btn-block " id="testFunctionAndPrint">测试功能并打印</button>
+			<div id="outPut">
+				<h5>输出</h5>
+				<span id="testPrint"></span>
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/charset/demo_charset_charsetTools.js');
+		</script>
+	</body>
+
+</html>

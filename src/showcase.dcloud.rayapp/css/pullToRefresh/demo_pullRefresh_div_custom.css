@@ -1,0 +1,59 @@
+/**
+ * div 自定义下拉刷新
+ */
+
+.mui-bar~.mui-content .mui-fullscreen {
+	top: 44px;
+	height: auto;
+}
+
+
+/******************滑动栏目***************************/
+
+.mui-control-content {
+	background-color: #f5f5f5;
+}
+
+.mui-control-content .mui-loading {
+	margin-top: 50px;
+}
+
+
+/*重写一个比较短的滑动条*/
+
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+	background-color: transparent;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar .custom-progressbar {
+	height: 2px;
+	width: 60%;
+	margin: auto;
+	background-color: #558fff;
+}
+
+.mui-segmented-control .mui-active {
+	color: #558fff;
+}
+
+
+/*栏目标题*/
+
+.mui-control-item {
+	position: relative;
+	font-size: 15px;
+	color: #666666;
+}
+
+
+/*绘制标题右侧的线*/
+
+.control-line-item:after {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	width: 1px;
+	height: 50%;
+	content: '';
+	border-left: 1px solid #e6e6e6;
+}

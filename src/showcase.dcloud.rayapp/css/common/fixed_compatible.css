@@ -1,0 +1,15 @@
+/**
+ * 兼容性问题修复
+ */
+
+
+/*div的侧滑栏中 如果position不为fixed,在5s safari中横屏有问题
+ !important 为设置100W的优先级*/
+.mui-off-canvas-wrap .mui-bar {
+	position: fixed !important;
+}
+
+/*这个样式主要是为了便于区分是否有引入本样式*/
+.mui-content-padded p{
+	color: red;
+}

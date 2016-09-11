@@ -1,0 +1,62 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-05-25
+        描述： 图片工具类相关
+        包括有mui图片预览的操作
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/imgOperation/demo_imageTools.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">图片操作</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<div class="img-container">
+				<div id="img-group">
+				</div>
+				<!-- H5文件选择相关-->
+				<input type="file" id="chooseImgFromGalleryFile" class="minSize" />
+					
+				<!-- H5摄像相关 -->
+				<video id="captureCameraVideo" width="1" height="1" autoplay></video>
+				<canvas id="captureCameraCanvas" width="320" height="240" class="common-hidden"></canvas>
+				<div id="addImg" class="mui-pull-left pic-div add-img">
+					<img class="img-photo" src="../../img/imgOperation/img_addphoto.png" />
+					<div class="closeLayer common-hidden">
+						<img src="../../img/imgOperation/img_delete_error.png" class="plus-pic" />
+					</div>
+				</div>
+
+			</div>
+			<button class="mui-btn mui-btn-block " id="selectImgFromGallery" >从图库中选择</button>
+			<button class="mui-btn mui-btn-block " id="selectImgFromCamera" >从摄像机选择</button>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/imgOperation/demo_imageTools.js');
+		</script>
+	</body>
+
+</html>
