@@ -42,13 +42,67 @@ define(function(require, exports, module) {
 		//info监听
 		mui('#header').on('tap', '#info', function() {
 			//WindowTools.createWin(null, 'about/demo_about.html');
-			WindowTools.openWinWithTemplate(null, 'about/demo_about.html',null,{
-				templateOptions:{
-					title:'关于'
+			WindowTools.openWinWithTemplate(null, 'about/demo_about.html', null, {
+				templateOptions: {
+					title: '关于'
 				}
 			});
 		});
+		//禁止后台刷新需要父子页面都进行监听才行
+		window.top.addEventListener("keydown", function(event) {
+			if(event.defaultPrevented) {
+				return; // Should do nothing if the default action has been cancelled
+			}
+
+			var handled = false;
+			var targetCode;
+			if(event.key !== undefined) {
+				// Handle the event with KeyboardEvent.key and set handled true.
+				//targetCode = event.key;
+			}
+			if(event.keyIdentifier !== undefined) {
+				// Handle the event with KeyboardEvent.keyIdentifier and set handled true.
+				//targetCode = event.keyIdentifier;
+			}
+			if(event.keyCode !== undefined) {
+				targetCode = event.keyCode;
+				// Handle the event with KeyboardEvent.keyCode and set handled true.
+			}
+			//禁止f5事件
+			if(targetCode == 116 || (event.ctrlKey && targetCode == 82)) {
+				handled = true;
+			}
+
+			if(handled) {
+				// Suppress "double action" if event handled
+				event.preventDefault();
+			}
+		}, true);
+		//禁止鼠标右键
+		if(window.Event){
+			document.captureEvents(Event.MOUSEUP);
+		}
+		function nocontextmenu() {
+			event.cancelBubble = true
+			event.returnValue = false;
+			return false;
+		}
+
+		function norightclick(e) {
+			if(window.Event) {
+				if(e.which == 2 || e.which == 3)
+					return false;
+			} else
+			if(event.button == 2 || event.button == 3) {
+				event.cancelBubble = true
+				event.returnValue = false;
+				return false;
+			}
+		}
+		document.oncontextmenu = nocontextmenu; // for IE5+   
+		document.onmousedown = norightclick; // for all others   
 	}
+
 	/**
 	 * @description 初始化列表
 	 */
@@ -160,6 +214,15 @@ define(function(require, exports, module) {
 			}]
 		}, {
 			type: 0,
+			title: 'Canvas效果',
+			linkUrl: '',
+			children: [{
+				type: 1,
+				title: '360加速球效果',
+				linkUrl: 'canvas/demo_canvas_speedBall.html'
+			}]
+		}, {
+			type: 0,
 			title: 'media影音',
 			linkUrl: '',
 			children: [{
@@ -179,7 +242,7 @@ define(function(require, exports, module) {
 				type: 1,
 				title: 'SrorageTools操作',
 				linkUrl: 'storage/demo_storage_storageTools.html'
-			},{
+			}, {
 				type: 1,
 				title: 'IndexedDB操作',
 				linkUrl: 'storage/demo_storage_sqlTools.html'
@@ -319,65 +382,30 @@ define(function(require, exports, module) {
 				title: '侧滑页面横屏兼容',
 				linkUrl: 'compatibility/demo_compatibility_offcanvasHorizontalScreen.html'
 			}]
-		}, {
-			type: 0,
-			title: '接口测试',
-			linkUrl: '',
-			children: [{
-				type: 1,
-				title: '接口ajax测试',
-				linkUrl: 'test/demo_test_interfaceAccess.html'
-			}]
-		}, {
-			type: 0,
-			title: 'ejs',
-			linkUrl: '',
-			children: [{
-				type: 1,
-				title: 'ejs api',
-				linkUrl: 'ejs/demo_ejs_api.html'
-			}]
-		}, {
-			type: 0,
-			title: '微信网页开发',
-			linkUrl: '',
-			children: [{
-				type: 1,
-				title: '微信网页授权示例',
-				linkUrl: 'weichat/demo_weichat_oauth_api.html'
-			}, {
-				type: 1,
-				title: '微信网页JSSDK-订阅,服务号',
-				linkUrl: 'weichat/demo_weichat_jssdk_normal.html'
-			}, {
-				type: 1,
-				title: '微信网页JSSDK-企业号',
-				linkUrl: 'weichat/demo_weichat_jssdk_enterprise.html'
-			}]
-		}, {
+		},  {
 			type: 0,
 			title: '测试',
 			linkUrl: '',
 			children: [{
-				type: 1,
-				title: '测试页面',
-				linkUrl: 'test/demo_test_test.html'
-			}, {
-				type: 1,
-				title: '测试页面2',
-				linkUrl: 'test/demo_test_test2.html'
-			}, {
-				type: 1,
-				title: '未优化的打开方式',
-				linkUrl: 'testUnOptimized'
-			}
-//			, {
-//				type: 1,
-//				title: '测试景德镇页面',
-//				linkUrl: 'http://jdz.jxzwfww.gov.cn/jdzzwfw/grbs_list.jspx?zhuti=%E8%AE%BE%E7%AB%8B%E5%8F%98%E6%9B%B4&zhutiorbumentext=%E8%AE%BE%E7%AB%8B%E5%8F%98%E6%9B%B4&service_object=0'
-//			}
+					type: 1,
+					title: '测试页面',
+					linkUrl: 'test/demo_test_test.html'
+				}, {
+					type: 1,
+					title: '测试页面2',
+					linkUrl: 'test/demo_test_test2.html'
+				}, {
+					type: 1,
+					title: '未优化的打开方式',
+					linkUrl: 'testUnOptimized'
+				}
+				//			, {
+				//				type: 1,
+				//				title: '测试景德镇页面',
+				//				linkUrl: 'http://jdz.jxzwfww.gov.cn/jdzzwfw/grbs_list.jspx?zhuti=%E8%AE%BE%E7%AB%8B%E5%8F%98%E6%9B%B4&zhutiorbumentext=%E8%AE%BE%E7%AB%8B%E5%8F%98%E6%9B%B4&service_object=0'
+				//			}
 			]
-			
+
 		}];
 		initListItemByJson(listData);
 	}

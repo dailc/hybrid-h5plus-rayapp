@@ -9,6 +9,7 @@ define(function(require, exports, module) {
 	var CommonTools = require('CommonTools_Core');
 	//下拉刷新
 	var PullToRefreshTools = require('PullToRefresh_Impl_Default_Core');
+	var DefaultLitemplate = require('litemplate_pulltorefresh_biz_default');
 	//下拉刷新对象
 	var pullToRefreshObj;
 	//搜索值

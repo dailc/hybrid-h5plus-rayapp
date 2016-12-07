@@ -55,7 +55,7 @@ define(function(require, exports, module) {
 	 * @param {JSON} options 传入的参数
 	 */
 	function PullToRefresh(element, options) {
-		if (typeof element !== 'object') {
+		if(typeof element !== 'object') {
 			//如果第一个不是options
 			this.element = element;
 		} else {
@@ -64,10 +64,10 @@ define(function(require, exports, module) {
 		}
 		//如果没有则用默认参数
 		this.element = this.element || defaultSettingOptions['element'];
-		if (typeof this.element === 'string') {
+		if(typeof this.element === 'string') {
 			this.element = document.querySelector(this.element);
 		}
-		
+
 		//合并默认参数
 		this.options = CommonTools.extend(true, {}, defaultSettingOptions, options);
 	};
@@ -84,12 +84,12 @@ define(function(require, exports, module) {
 		muiOptions = {
 			pullRefresh: {
 				container: that.element,
-				down: that.options.down?(CommonTools.extend(true,{},that.options.down,{
-					callback:pulldownCallback
-				})):null,
-				up: that.options.up?(CommonTools.extend(true,{},that.options.up,{
-					callback:pullupCallback
-				})):null
+				down: that.options.down ? (CommonTools.extend(true, {}, that.options.down, {
+					callback: pulldownCallback
+				})) : null,
+				up: that.options.up ? (CommonTools.extend(true, {}, that.options.up, {
+					callback: pullupCallback
+				})) : null
 			}
 		};
 		//重写两个方法
@@ -111,41 +111,41 @@ define(function(require, exports, module) {
 		that.isLoadingMore = false;
 		//是否没有更多数据
 		that.isNoMoreData = false;
-		
+		that.finished = false;
 	};
 	/**
 	 * @description 下拉刷新回调,用来替代options里的回调,主要是方便传递this指针
 	 * 将this指针重新指向为单例下拉刷新
 	 */
-	function pulldownCallback(){
+	function pulldownCallback() {
 		var callback = instance.options.down.callback;
-		callback&&callback.apply(instance);
+		callback && callback.apply(instance);
 	};
 	/**
 	 * @description 上拉加载回调,用来替代options里的回调,主要是方便传递this指针
 	 */
-	function pullupCallback(){
+	function pullupCallback() {
 		var callback = instance.options.up.callback;
-		callback&&callback.apply(instance);
+		callback && callback.apply(instance);
 	};
 	/**
 	 * @description -手动触发一次上拉加载更多
 	 */
 	PullToRefresh.prototype.pullupLoading = function() {
 		var that = this;
-		if (that.options.up) {
+		if(that.options.up) {
 			//只有存在上拉加载才有用
-			if (!that.isLoadingMore) {
+			if(!that.isLoadingMore) {
 				//如果没有处于上拉加载中
 				//如果现在没有更多数据了,重新开启
-				if (that.isNoMoreData) {
+				if(that.isNoMoreData) {
 					mui(that.element).pullRefresh().refresh(true);
 				}
 				//启动上拉加载
 				mui(that.element).pullRefresh().pullupLoading();
 				//修复刷新时,无法滚动到最顶部问题-ios中问题，或者是普通浏览器
 				//只要不是Android的plus情况就用修复,手动回到顶部
-				if (!(window.plus && plus.os.name === 'Android')) {
+				if(!(window.plus && plus.os.name === 'Android')) {
 					mui(that.element).pullRefresh().scrollTo(0, 0, 100);
 				}
 				//变为加载更多
@@ -160,48 +160,57 @@ define(function(require, exports, module) {
 	 */
 	PullToRefresh.prototype.resetLoadingState = function(isPullDown, isNoMoreData) {
 		var that = this;
-		if (isPullDown) {
+		if(isPullDown) {
 			//如果是恢复下拉刷新状态--这个状态只有下拉刷新时才恢复
 			mui(that.element).pullRefresh().endPulldownToRefresh();
 		}
 		//接下拉不管是下拉刷新,还是上拉加载,都得刷新上拉加载的状态
-		if (isNoMoreData) {
+		if(isNoMoreData) {
 			//如果没有更多数据了-注意两个变量的差异
 			mui(that.element).pullRefresh().endPullupToRefresh(true);
 			//布尔变量为不显示上拉加载更多了
 			that.isNoMoreData = true;
+			that.finished = true;
 		} else {
 			//加载更多
-			//专门修复下拉刷新时恢复加载更多的问题
-			if (that.isNoMoreData) {
-				mui(that.element).pullRefresh().refresh(true);
-			}
-			that.isNoMoreData = false;
+
 			mui(that.element).pullRefresh().endPullupToRefresh(false);
 		}
 		that.isLoadingMore = false;
 	};
 	/**
+	 * @description 刷新
+	 */
+	PullToRefresh.prototype.refresh = function() {
+		var that = this;
+		//专门修复下拉刷新时恢复加载更多的问题
+		if(that.isNoMoreData) {
+			mui(that.element).pullRefresh().refresh(true);
+			that.isNoMoreData = false;
+			that.finished = false;
+		}
+	};
+	/**
 	 * @description 重置下拉刷新
 	 */
-	PullToRefresh.prototype.endPullDownToRefresh = function(){
+	PullToRefresh.prototype.endPullDownToRefresh = function() {
 		var that = this;
-		that.resetLoadingState(true,false);
+		that.resetLoadingState(true, false);
 	};
 	/**
 	 * @description 重置上拉加载
 	 */
-	PullToRefresh.prototype.endPullUpToRefresh = function(finished){
+	PullToRefresh.prototype.endPullUpToRefresh = function(finished) {
 		var that = this;
-		that.resetLoadingState(false,finished);
-	};	
+		that.resetLoadingState(false, finished);
+	};
 	/**
 	 * @description 初始化下拉刷新组件
 	 * @param {JSON} options 传入的参数
 	 * @return 返回的是一个下拉刷新对象
 	 */
 	exports.initPullToRefresh = function(element, options) {
-		if(!instance){
+		if(!instance) {
 			instance = new PullToRefresh(element, options);
 			instance.init();
 		}

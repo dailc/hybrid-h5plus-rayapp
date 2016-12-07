@@ -17,7 +17,8 @@
 			'doc_commonAffair_Bizlogic': 'js/bizlogic/common/doc_commonAffair.js',
 			'doc_commonGooleCodePrettfy_Bizlogic': 'js/bizlogic/common/doc_commonGooleCodePrettfy.js',
 			'doc_commonMobileTestAffair_Bizlogic': 'js/bizlogic/common/doc_commonMobileTestAffair.js',
-			'laytpl_Bizlogic': 'js/bizlogic/frameworkDoc/laytpl.js'
+			'litemplate_pulltorefresh_biz_default': 'js/bizlogic/common/litemplate_pulltorefresh_biz_default.js',
+			'bizlogic_common_ejs_default': 'js/bizlogic/common/bizlogic_common_ejs_default.js'
 		}
 	});
 	//定义普通的文件别名-通过脚本直接引入的

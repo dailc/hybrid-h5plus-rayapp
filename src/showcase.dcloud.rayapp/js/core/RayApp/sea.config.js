@@ -146,6 +146,7 @@
 			'PullToRefresh_Base_Type1_Core': 'js/core/RayApp/Tools/RayApp.PullToRefresh.Base.Type1.js',
 			//下拉刷新基类的皮肤1(重写下拉的实现)-自定义类别1(基于h5的非iscroll形式)操作相关操作-纯h5
 			'PullToRefresh_Base_Type1__Material1_Core': 'js/core/RayApp/Tools/RayApp.PullToRefresh.Base.Type1.material1.js',
+			'PullToRefresh_Base_Type2_Core': 'js/core/RayApp/Tools/RayApp.PullToRefresh.Base.Type2.js',
 			//下拉刷新实现-默认实现(基于mui的重写)操作相关操作-纯h5
 			'PullToRefresh_Impl_Default_Core': 'js/core/RayApp/Tools/RayApp.PullToRefresh.Impl.Default.js'
 			

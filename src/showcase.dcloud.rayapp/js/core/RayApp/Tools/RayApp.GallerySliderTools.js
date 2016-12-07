@@ -204,6 +204,7 @@ define(function(require, exports, module) {
 		gallery.slider({
 			interval: tmpAutoTime //轮播周期，默认为0：不轮播
 		});
+		mui(element).off();
 		//批量绑定
 		mui(element).on('tap', '.slider-img-item', function(e) {
 			var id = this.getAttribute("id");

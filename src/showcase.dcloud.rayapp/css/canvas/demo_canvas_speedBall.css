@@ -1,0 +1,20 @@
+/**
+ * 360加速球效果
+ */
+canvas {
+	margin: 20px;
+	/*
+	 background: black;*/
+}
+
+#mySpeedBall {
+	position: relative;
+	height: 300px;
+	width: 200px;
+}
+#mySpeedBall2 {
+	margin-top: 10px;
+	position: relative;
+	height: 300px;
+	width: 200px;
+}

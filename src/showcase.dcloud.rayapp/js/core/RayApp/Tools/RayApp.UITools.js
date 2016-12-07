@@ -842,7 +842,7 @@ define(function(require, exports, module) {
 			popPicker.setData(data);
 			popPicker.show(function(items) {
 				if (chooseCallBack && typeof(chooseCallBack) == 'function') {
-					chooseCallBack(items[0].text, items[0].value, items[0]);
+					chooseCallBack(items[0].text, items[0].value, items[0],items);
 				}
 			});
 		} else {

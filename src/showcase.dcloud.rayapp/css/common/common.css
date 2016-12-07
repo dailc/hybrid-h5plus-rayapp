@@ -100,7 +100,9 @@ body,
 .m15 {
 	margin: 15px;
 }
-
+.mt10 {
+	margin-top: 10px;
+}
 .mt35 {
 	margin-top: 35px;
 }

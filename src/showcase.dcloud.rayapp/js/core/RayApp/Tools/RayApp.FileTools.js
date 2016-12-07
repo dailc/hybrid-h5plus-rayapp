@@ -170,6 +170,15 @@ define(function(require, exports, module) {
 				type = 'File';
 			}
 			
+		}else if(options.type === 'All') {
+			if(CommonTools.os.ejs){
+				filter = '*/*';
+				type = 'DataUrl';
+			}else{
+				filter = '*';
+				type = 'DataUrl';
+			}
+			
 		}else {
 			filter = '*';
 			type = 'File';
@@ -303,6 +312,20 @@ define(function(require, exports, module) {
 			isMulti: options.isMulti || false,
 			filter: options.filter,
 			type: 'Text'
+		});
+	};
+	/**
+	 * @description 设置,将input标签设为选择所有(包括文件，图片，照相)的标签,选择成功后返回文本str
+	 * @param {HTMLElement||String} dom input标签,最好直接是file类型(防止歧义)
+	 * @param {Function} successCB(文本str) 成功选择后的回调,返回文本str
+	 * 注意: 没选择一张图片就会回调一次
+	 * @param {JSON} options 设置参数
+	 */
+	exports.setSelectAllFromDisks = function(dom, successCB, options) {
+		setSelectFilesFromwDisks(dom, successCB, {
+			isMulti: options.isMulti || false,
+			filter: options.filter,
+			type: 'All'
 		});
 	};
 	/**

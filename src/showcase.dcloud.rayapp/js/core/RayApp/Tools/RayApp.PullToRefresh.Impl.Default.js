@@ -113,7 +113,7 @@ define(function(require, exports, module) {
 				//默认的contentType
 				contentType: "application/x-www-form-urlencoded",
 				//自定义头部默认为空
-				headers:null
+				headers: null
 			},
 			//是否请求完数据后就自动渲染到列表容器中,如果为false，则不会
 			//代表需要自己手动在成功回调中自定义渲染
@@ -142,6 +142,8 @@ define(function(require, exports, module) {
 		//数据容器
 		self.respnoseEl = document.getElementById(options.bizlogic.listdataId);
 		self.totalCount = 0;
+		//是否不可以加载更多,如果某些的返回数据为空,代表不可以加载更多了
+		self.isShouldNoMoreData = true;
 		//初始化当前页
 		self.currPage = self.options.bizlogic.defaultInitPageNum;
 		if(self.options.up && self.options.up.auto) {
@@ -220,11 +222,11 @@ define(function(require, exports, module) {
 	 */
 	PullDownRefresh.prototype.refresh = function() {
 		var self = this;
-		if(!self.options.up){
+		if(!self.options.up) {
 			//如果不存在上拉加载
 			self.clearResponseEl();
 			self.pullDownCallback();
-		}else if(!self.loadingUp) {
+		} else if(!self.loadingUp) {
 			//存在上拉加载
 			//清空以前容器中的数据
 			self.clearResponseEl();
@@ -233,6 +235,7 @@ define(function(require, exports, module) {
 			//手动将状态设为可以加载更多
 			if(self.pullToRefreshInstance.finished) {
 				self.pullToRefreshInstance.refresh(true);
+				self.isShouldNoMoreData = true;
 			}
 			//触发一次加载更多
 			self.pullToRefreshInstance.pullupLoading();
@@ -294,6 +297,8 @@ define(function(require, exports, module) {
 	 */
 	PullDownRefresh.prototype.errorRequest = function(xhr, status, msg) {
 		var self = this;
+		//没有返回数据,代表不可以加载更多
+		self.isShouldNoMoreData = false;
 		self.refreshState();
 		self.currPage--;
 		self.currPage = self.currPage >= self.defaultInitPageNum ? self.currPage : self.defaultInitPageNum;
@@ -313,8 +318,8 @@ define(function(require, exports, module) {
 			self.refreshState();
 			return;
 		}
-		if(self.options.isDebug){
-			console.log('下拉刷新返回数据:'+JSON.stringify(response));
+		if(self.options.isDebug) {
+			console.log('下拉刷新返回数据:' + JSON.stringify(response));
 		}
 		if(self.options.bizlogic.changeResponseDataCallback) {
 			//如果存在转换数据的函数,用外部提供的
@@ -360,6 +365,9 @@ define(function(require, exports, module) {
 					if(outList != "") {
 						HtmlTools.appendHtmlChildCustom(self.respnoseEl, outList);
 					}
+				} else {
+					//没有返回数据,代表不可以加载更多
+					self.isShouldNoMoreData = false;
 				}
 			} else {
 				if(self.options.isDebug == true) {
@@ -372,7 +380,6 @@ define(function(require, exports, module) {
 			//如果回调函数存在,第二个参数代表是否是下拉刷新请求的,如果是,则是代表需要重新刷新数据
 			self.options.bizlogic.successRequestCallback(response, self.isPullDown || (self.currPage == self.options.bizlogic.defaultInitPageNum));
 		}
-
 		if(!isInitSessionData) {
 			//如果不是session数据
 			self.refreshState();
@@ -415,7 +422,7 @@ define(function(require, exports, module) {
 			}
 		} else {
 			//其它类型数据都使用通用处理方法
-			var result = CommonTools.handleStandardResponse(response,1);
+			var result = CommonTools.handleStandardResponse(response, 1);
 			self.totalCount = result.totalCount;
 			outData = result.data;
 		}
@@ -430,14 +437,20 @@ define(function(require, exports, module) {
 		if(self.isPullDown) {
 			//如果是下拉刷新
 			self.pullToRefreshInstance.endPullDownToRefresh();
+			//不管是下拉刷新还是上拉加载,都要刷新加载更多状态
+			//如果加载更多是否已经结束了
+			//console.log("finished:"+self.pullToRefreshInstance.finished);
+			if(self.pullToRefreshInstance.finished) {
+				self.pullToRefreshInstance.refresh(true);
+				//又可以加载更多
+				//console.log("变为true");
+				self.isShouldNoMoreData = true;
+			}
 		}
-		//不管是下拉刷新还是上拉加载,都要刷新加载更多状态
-		//如果加载更多是否已经结束了
-		if(self.pullToRefreshInstance.finished) {
-			self.pullToRefreshInstance.refresh(true);
-		}
+
 		var itemLength = HtmlTools.getChildElemLength(self.respnoseEl);
-		if(itemLength >= self.totalCount) {
+		//console.log("是否可以加载更多：" + self.isShouldNoMoreData);
+		if(!self.isShouldNoMoreData) {
 			//没有更多数据 
 			self.pullToRefreshInstance.endPullUpToRefresh(true);
 		} else {
@@ -447,6 +460,7 @@ define(function(require, exports, module) {
 		self.loadingDown = false;
 		self.loadingUp = false;
 	};
+	
 	/**
 	 * @description 清空容器
 	 */
@@ -482,6 +496,8 @@ define(function(require, exports, module) {
 				require.async('PullToRefresh_Base_Type1_Core', generatePullToRefreshCallback);
 			} else if(options.skin === 'type1_material1') {
 				require.async('PullToRefresh_Base_Type1__Material1_Core', generatePullToRefreshCallback);
+			} else if(options.skin === 'type2') {
+				require.async('PullToRefresh_Base_Type2_Core', generatePullToRefreshCallback);
 			} else {
 				console.error("错误:传入的下拉刷新皮肤错误,超出范围!");
 			}

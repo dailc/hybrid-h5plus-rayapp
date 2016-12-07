@@ -82,3 +82,30 @@
 
 /* 自定义 下拉刷新模块结束
  * ***********************
+ */
+
+/*
+ * 下拉刷新样式2
+ */
+/**
+ * 加载更多的loading
+ */
+.mui-pull-bottom-tips2 {
+	position: relative;
+	height: auto;
+	width: 100%;
+	background-color: inherit;
+	font-size: 15px;
+	color: #777;
+}		
+.mui-pull-bottom-tips2 .mui-spinner {
+	position: absolute;
+	top: 0;
+	left: 40%;
+}	
+.mui-pull-bottom-tips2 .mui-pull-loading {
+	position: absolute;
+	top: -8px;
+	left: 40%;
+	margin-left: 30px;
+}

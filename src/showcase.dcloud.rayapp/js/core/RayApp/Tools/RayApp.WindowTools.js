@@ -384,7 +384,9 @@ define(function(require, exports, module) {
 		} else {
 			extrasDataStr += '&';
 		}
-		extrasDataStr += 'H5PageId=' + id;
+		if(!CommonTools.os.ejs){
+			extrasDataStr += 'H5PageId=' + id;
+		}
 		//解决缓存问题
 		extrasDataStr += '&_t=' + Math.random();
 		for(var item in extras) {
@@ -425,8 +427,11 @@ define(function(require, exports, module) {
 				window.open(url + extrasDataStr, '');
 			} else {
 				//本页面跳转
-				//TODO 先临时这么处理：手机上顶层跳，PC上parent跳
-				if(CommonTools.os.ios || CommonTools.os.android) {
+				//如果是ejs
+				if(CommonTools.os.ejs&&ejs){
+					ejs.page.openPage(url,null,extras,styles,openCallback);
+				}else if(CommonTools.os.ios || CommonTools.os.android) {
+					//TODO 先临时这么处理：手机上顶层跳，PC上parent跳
 					//top表示主窗口，location表示当前窗口，如果你的文件只有一个框架，没有iframe和frmaeset，那么是完全一致的，没有区别。
 					window.top.location.href = url + extrasDataStr;
 					//window.parent.location.href = url + extrasDataStr;
@@ -434,6 +439,8 @@ define(function(require, exports, module) {
 					//parent是当前窗口的父窗口
 					window.parent.location.href = url + extrasDataStr;
 				}
+				
+				
 			}
 
 			//console.log('目标url:' + url + extrasDataStr);
@@ -448,6 +455,7 @@ define(function(require, exports, module) {
 		//防止重复创建
 		var webview = plus.webview.getWebviewById(id);
 		if(webview) { //如果已存在
+			console.log("webvew存在:"+id);
 			webview.show(styles.aniShow, styles.duration, function() {
 				openCallback && openCallback();
 				if(styles.closeCurrentAfterOpen) {
@@ -483,6 +491,7 @@ define(function(require, exports, module) {
 				closeCallBack && closeCallBack();
 				webview = null;
 			}, false);
+			return webview;
 		}
 	};
 	/**
@@ -497,7 +506,7 @@ define(function(require, exports, module) {
 	 */
 	exports.createWin = function(id, url, extras, styles, openCallback, closeCallBack) {
 		//采用默认的style
-		createWinWithStyle(id, url, extras, styles, openCallback, closeCallBack);
+		return createWinWithStyle(id, url, extras, styles, openCallback, closeCallBack);
 	};
 	/**
 	 * @description 显示一个窗口,使用默认样式
@@ -585,7 +594,7 @@ define(function(require, exports, module) {
 			return;
 		}
 		styles = styles || {};
-		var isShowFirst = (!styles.isShowFirst) ? false : true;
+		var isShowFirst = (typeof styles.isShowFirst === 'boolean') ? styles.isShowFirst : true;
 		var parentDom = styles.parentDom;
 		var allPagesStr = "";
 		if(window.plus) {
@@ -1107,6 +1116,123 @@ define(function(require, exports, module) {
 
 	};
 	/**
+	 * @description 获取滚动条在Y轴上的滚动距离
+	 * @return {Number} 返回具体距离
+	 */
+	exports.getScrollTop = function() {
+		var scrollTop = 0,
+			bodyScrollTop = 0,
+			documentScrollTop = 0;
+		if(document.body) {
+			bodyScrollTop = document.body.scrollTop || 0;
+		}
+		if(document.documentElement) {
+			documentScrollTop = document.documentElement.scrollTop || 0;
+		}
+		scrollTop = (bodyScrollTop > documentScrollTop) ? bodyScrollTop : documentScrollTop;
+		return scrollTop;
+	}
+
+	/**
+	 * @description 获取文档的总高度
+	 * @return {Number} 返回具体高度
+	 */
+	exports.getScrollHeight = function() {
+		var scrollHeight = 0,
+			bodyScrollHeight = 0,
+			documentScrollHeight = 0;
+		if(document.body) {
+			bodyScrollHeight = document.body.scrollHeight;
+		}
+
+		if(document.documentElement) {
+			documentScrollHeight = document.documentElement.scrollHeight;
+		}
+		scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+		return scrollHeight;
+	};
+	/**
+	 * @description 浏览器视口的高度
+	 * @return {Number} 返回具体高度
+	 */
+	exports.getWindowHeight = function() {
+		var windowHeight = 0;
+		if(document.compatMode == "CSS1Compat") {
+			windowHeight = document.documentElement.clientHeight;
+		} else {
+			windowHeight = document.body.clientHeight;
+		}
+		return windowHeight;
+	};
+	/**
+	 * @description 获取目标在文档中的y坐标
+	 * @return {Number} 返回具体高度
+	 */
+	exports.getdomY = function(elem) {
+		var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);    
+		return elem.offsetParent?(elem.offsetTop+exports.getdomY(elem.offsetParent)):elem.offsetTop; 
+	};
+	/**
+	 * @description 将参数添加到url中, 返回新的url
+	 * @param {Array} params 一个json数组
+	 * @param {String} url 对应url
+	 */
+	exports.appendParams = function(params, url) {
+		var baseWithSearch = url.split('#')[0];
+		var hash = url.split('#')[1];
+		for(var i = 0; i < params.length; i++) {
+			if(params[i].value !== undefined) {
+				var newParam = params[i].key + "=" + params[i].value;
+				if(baseWithSearch.indexOf('?') > 0) {
+					var oldParamReg = new RegExp(params[i].key + '=[-\\w]{0,40}', 'g');
+					if(oldParamReg.test(baseWithSearch)) {
+						baseWithSearch = baseWithSearch.replace(oldParamReg, newParam);
+					} else {
+						baseWithSearch += "&" + newParam;
+					}
+				} else {
+					baseWithSearch += "?" + newParam;
+				}
+			}
+		}
+		if(hash) {
+			url = baseWithSearch + '#' + hash;
+		} else {
+			url = baseWithSearch;
+		}
+		return url;
+	};
+	/**
+	 * @description 将参数添加到url中, 返回新的url
+	 * @param {Array} params 一个json数组
+	 * @param {String} url 对应url
+	 */
+	exports.appendParams = function(params, url) {
+		var baseWithSearch = url.split('#')[0];
+		var hash = url.split('#')[1];
+		for(var i = 0; i < params.length; i++) {
+			if(params[i].value !== undefined) {
+				var newParam = params[i].key + "=" + params[i].value;
+				if(baseWithSearch.indexOf('?') > 0) {
+					var oldParamReg = new RegExp(params[i].key + '=[-\\w]{0,40}', 'g');
+					if(oldParamReg.test(baseWithSearch)) {
+						baseWithSearch = baseWithSearch.replace(oldParamReg, newParam);
+					} else {
+						baseWithSearch += "&" + newParam;
+					}
+				} else {
+					baseWithSearch += "?" + newParam;
+				}
+			}
+		}
+		if(hash) {
+			url = baseWithSearch + '#' + hash;
+		} else {
+			url = baseWithSearch;
+		}
+		return url;
+	};
+	/**
 	 * @description 一些windowUtil带来的全局影响
 	 * 1.自定义CustomEvent 事件
 	 * 2.给每一个window加上一个id (H5PageId这个参数)
@@ -1139,6 +1265,12 @@ define(function(require, exports, module) {
 			window.CustomEvent = CustomEvent;
 		}
 		window.id = getWindowIdByHref(window.location.href);
+//		if(CommonTools.os.ejs&&ejs){
+//			//ejs下设置页面标题
+//			//var title = document.querySelector('head').querySelector('title').innerText;
+//			//console.log("title:"+title);
+//			//ejs.navigator.setTitle(title);
+//		}
 		//console.log('页面id:' + window.id);
 	})();
 });

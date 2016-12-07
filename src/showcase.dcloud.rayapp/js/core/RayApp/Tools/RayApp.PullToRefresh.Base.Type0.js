@@ -387,11 +387,7 @@ define(function(require, exports, module) {
 					//如果没有更多数据了-注意两个变量的差异
 					this.endPullupToRefresh(true);
 				} else {
-					//加载更多
-					//专门修复下拉刷新时恢复加载更多的问题
-					if(that.finished) {
-						this.refresh(true);
-					}
+					
 					this.endPullupToRefresh(false);
 				}
 			},

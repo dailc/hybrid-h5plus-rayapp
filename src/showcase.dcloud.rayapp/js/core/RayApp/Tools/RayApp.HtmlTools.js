@@ -6,6 +6,7 @@
  * 功能模块:
  * Html相关工具模块********************************
  * Html相关工具模块结束*****************************
+ * 
  */
 define(function(require, exports, module) {
 	"use strict";
@@ -131,6 +132,9 @@ define(function(require, exports, module) {
 	 * @param {HTMLElement||String} childElem 目标html的字符串或者是dom对象
 	 */
 	exports.appendHtmlChildCustom = function(targetObj, childElem) {
+		if(typeof targetObj === 'string'){
+			targetObj = document.querySelector(targetObj);
+		}
 		if (targetObj == null || childElem == null || !(targetObj instanceof HTMLElement)) {
 			return;
 		}
