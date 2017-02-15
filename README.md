@@ -26,7 +26,7 @@ RayApp的文档差不多花了大半年时间，到最后也没有完全完善�
 
 比如里面有一篇关于如何进行webview性能优化的 [http://rayproject.applinzi.com/doc.web.crossPlatformGroup/html/frameworkDoc/index.html#page=doc_frameworkDoc_simple_webviewOptimized](http://rayproject.applinzi.com/doc.web.crossPlatformGroup/html/frameworkDoc/index.html#page=doc_frameworkDoc_simple_webviewOptimized)
 
-更多请参考具体文档，里面有开放h5+时整理的一些典型功能已经bug汇总。
+更多请参考具体文档，里面有开发h5+时整理的一些典型功能已经bug汇总。
 
 ## 说明
 由于工作相关，当前公司已经不再基于h5+进行开发，所以把这套方案开源了出来
