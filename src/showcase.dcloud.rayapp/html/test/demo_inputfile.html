@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+	</head>
+	<style>
+.upload-pretty {
+	position: relative;
+	/*盒模型*/
+	display: inline-block;
+	padding: 10px;
+	overflow: hidden;
+	/*文字排版*/
+	font-size: 16px;
+	color: #000000;
+	
+	
+	/*视觉外观*/
+	background: #fafafa;
+	border: 1px solid #eee;
+    border-radius: 5px;
+    
+   
+}
+.upload-pretty:hover {
+    color: #333;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+.upload-pretty input {
+	/*定位相关*/
+	position: absolute;
+	top: 0;
+	right: 0;
+	/*文字排版*/
+	/*这一点很重要,设置字体后,input宽度会变宽,否则无法充满父级div
+	 具体为font-size越大,越宽,一般认为100px就足矣*/
+	font-size: 100px;
+	/*其它*/
+	opacity: 0;
+	cursor: pointer
+}		
+	</style>
+	<body>
+	<div class="upload-pretty">
+		<input type="file" name="" id="inputFile">选择文件
+	</div>
+	
+	<script>
+		document.querySelector('#inputFile').addEventListener('change',function(){
+			console.log("change");
+		});
+	</script>
+	</body>
+</html>

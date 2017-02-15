@@ -1,0 +1,57 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-03
+        描述： 下拉刷新-类型2(钉钉或ejs)
+        -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'../../css/common/Dcommon_search.css',
+				'../../css/common/repailTopPocket45.css'
+			]);
+		</script>
+
+	</head>
+
+	<body>
+		<div class="mui-content ">
+			<div class="fixed-searchbar">
+				<!--通用样式2 -->
+					<div class="common-input-row common-input-type2">
+						<div class="common-input ">
+							<span class="btn-search mui-icon mui-icon-search" ></span>
+							<input type="text" class="common-input-clear" placeholder="搜索" id="input-searchName">
+						</div>
+						<span class="btn-search-txt " id="searchBtn">确定</span>
+					</div>
+			</div>
+			<div class="mt50" id="pullrefresh">
+	
+				<ul class="mui-table-view" id="listdata">
+	
+				</ul>
+				
+			</div>			
+		</div>
+		
+		
+	</body>
+	<!-- 通用js -->
+	<script>
+		SrcBoot.outSeaConfig();
+	</script>
+	<script>
+		seajs.use('js/bizlogic/pullToRefresh/demo_pullRefresh_impl_list_type2.js');
+	</script>
+
+</html>

@@ -382,7 +382,42 @@ define(function(require, exports, module) {
 				title: '侧滑页面横屏兼容',
 				linkUrl: 'compatibility/demo_compatibility_offcanvasHorizontalScreen.html'
 			}]
-		},  {
+		}, {
+			type: 0,
+			title: '接口测试',
+			linkUrl: '',
+			children: [{
+				type: 1,
+				title: '接口ajax测试',
+				linkUrl: 'test/demo_test_interfaceAccess.html'
+			}]
+		}, {
+			type: 0,
+			title: 'ejs',
+			linkUrl: '',
+			children: [{
+				type: 1,
+				title: 'ejs api',
+				linkUrl: 'ejs/demo_ejs_api.html'
+			}]
+		}, {
+			type: 0,
+			title: '微信网页开发',
+			linkUrl: '',
+			children: [{
+				type: 1,
+				title: '微信网页授权示例',
+				linkUrl: 'weichat/demo_weichat_oauth_api.html'
+			}, {
+				type: 1,
+				title: '微信网页JSSDK-订阅,服务号',
+				linkUrl: 'weichat/demo_weichat_jssdk_normal.html'
+			}, {
+				type: 1,
+				title: '微信网页JSSDK-企业号',
+				linkUrl: 'weichat/demo_weichat_jssdk_enterprise.html'
+			}]
+		}, {
 			type: 0,
 			title: '测试',
 			linkUrl: '',

@@ -1,0 +1,39 @@
+<!-- 
+        作者：dailc 
+        时间：2017-01-09
+        描述：oauth页面
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-content " >
+			<button class="mui-btn mui-btn-block mt10" id="btn-login">授权登录</button>
+			<div id="result">
+				
+			</div>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/oauth/demo_oauth_sso.js');
+		</script>
+	</body>
+
+</html>

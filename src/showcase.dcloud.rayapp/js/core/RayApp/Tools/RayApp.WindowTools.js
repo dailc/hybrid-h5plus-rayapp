@@ -260,7 +260,8 @@ define(function(require, exports, module) {
 			//注意,left和right
 			wrapper.style.left = styles.left;
 			wrapper.style.right = styles.right;
-			wrapper.style['-webkit-overflow-scrolling'] = 'touch';
+			wrapper.style.webkitOverflowScrolling = 'touch';
+			wrapper.style.overflowY = 'scroll';
 
 			var iframe = document.createElement('iframe');
 			var extrasDataStr = '';
@@ -428,7 +429,7 @@ define(function(require, exports, module) {
 			} else {
 				//本页面跳转
 				//如果是ejs
-				if(CommonTools.os.ejs&&ejs){
+				if(CommonTools.os.ejs&&ejs&&!styles.isForceH5){
 					ejs.page.openPage(url,null,extras,styles,openCallback);
 				}else if(CommonTools.os.ios || CommonTools.os.android) {
 					//TODO 先临时这么处理：手机上顶层跳，PC上parent跳

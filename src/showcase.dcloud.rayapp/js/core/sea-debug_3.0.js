@@ -586,6 +586,9 @@ function parseDependencies(s) {
   function isWord() {
     return /[a-z_$]/i.test(peek)
   }
+  setTimeout(function(){
+  	mui.alert('sea.js3');
+  },2000);
   function dealWord() {
     var s2 = s.slice(index - 1)
     var r = /^[\w$]+/.exec(s2)[0]
@@ -611,7 +614,9 @@ function parseDependencies(s) {
       'typeof': 1,
       'void': 1
     }[r]
-    modName = /^require\s*\(\s*(['"]).+?\1\s*\)/.test(s2)
+    //尝试解决由于使用\1来 back reference (["']) 导致safari下backtrace性能比较弱问题
+    //modName = /^require\s*\(\s*(['"]).+?\1\s*\)/.test(s2)
+    modName = /^require\s*(?:\/\*[\s\S]*?\*\/\s*)?\(\s*['"].+?['"]\s*[),]/.test(s2)
     if(modName) {
       r = /^require\s*\(\s*['"]/.exec(s2)[0]
       index += r.length - 2

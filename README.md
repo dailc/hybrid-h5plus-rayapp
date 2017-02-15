@@ -22,4 +22,9 @@
 [http://rayproject.applinzi.com/doc.web.crossPlatformGroup/html/frameworkDoc/index.html](http://rayproject.applinzi.com/doc.web.crossPlatformGroup/html/frameworkDoc/index.html)
 
 
-## 近期内会整理好相关Demo，作为一个阶段的总结
+## 说明
+由于工作相关，当前公司已经不再基于h5+进行开发，所以把这套方案开源了出来
+
+虽然后续不再维护，但是整体框架还是有一定参考价值的，基于这套框架开发出来的项目有20多个，大部分已经上线。
+
+特别是showcase本身就是我使用优化技巧优化过后的一个跨平台APP。

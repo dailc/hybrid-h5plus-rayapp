@@ -6,7 +6,6 @@
  * 功能模块:
  * Html相关工具模块********************************
  * Html相关工具模块结束*****************************
- * 
  */
 define(function(require, exports, module) {
 	"use strict";

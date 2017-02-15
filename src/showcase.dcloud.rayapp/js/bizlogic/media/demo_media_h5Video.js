@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 
 			} else {
 				//隐藏选择空间栏
-				document.getElementById('TypeSwitch').style.display = 'none';
+				//document.getElementById('TypeSwitch').style.display = 'none';
 			}
 			initListeners();
 		});
@@ -162,9 +162,10 @@ define(function(require, exports, module) {
 //		if (isInlinePlay || !(window.plus && plus.os.name == 'Android')) {
 //			switchDefaultImgShow(false);
 //		}
-		if (isInlinePlay) {
+		//if (isInlinePlay) {
+			
 			switchDefaultImgShow(false);
-		}
+		//}
 		var url = videoMedia.getElementsByTagName('source')[0].src;
 		MediaTools.VideoModule.playHtml5Video(url, videoMedia, function(isPlay) {
 			if (isPlay) {

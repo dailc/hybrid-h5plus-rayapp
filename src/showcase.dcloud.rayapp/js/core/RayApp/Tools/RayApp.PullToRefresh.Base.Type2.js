@@ -76,11 +76,8 @@ define(function(require, exports, module) {
 			}else{
 				//ejs的下拉刷新
 				//开启下拉刷新
-				ejs.nativeUI.pullToRefresh.enable({
-					onSuccess: function() {
-						//alert('下拉刷新成功,立刻收起');
-						$this.options.down.callback && $this.options.down.callback();
-					}
+				ejs.nativeUI.pullToRefresh.enable(function(){
+					$this.options.down.callback && $this.options.down.callback();
 				});
 			}
 		}

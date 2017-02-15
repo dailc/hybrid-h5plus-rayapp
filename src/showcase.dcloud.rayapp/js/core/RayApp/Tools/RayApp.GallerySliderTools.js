@@ -3,11 +3,6 @@
  * @author dailc  
  * @version 3.0
  * @time 2016-05-22
- * 功能模块:
- * WidgetUtil模块****************************************
- * 基于mui的二次封装,前提时mui已经加载了
- * Ui控件工具类  基于plus系统 ,目前包括:
- * WidgetUtil模块完毕*************************************
  */
 define(function(require, exports, module) {
 	"use strict";

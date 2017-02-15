@@ -1,0 +1,76 @@
+<!-- 
+        作者：戴荔春 
+        时间：2016-10-17
+        描述：检查android端输入框与输入法不正常问题
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script>
+			document.write("<script type='text/javascript' src='../../js/core/RayApp/cacheControl.config.js?" + Math.random() + "'></scr" + "ipt>");
+		</script>
+		<script>
+			SrcBoot.output([
+				'css/mui.min.css',
+				'css/common/common.css',
+				'css/test/demo_test_input.css'
+			]);
+		</script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav bg-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">测试页面</h1>
+			<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<div class="">
+				<img src="../../img/gallery/img_testgallery1.jpg" class="img-top" />
+			</div>
+			
+			<ul class="tab_two">
+				<li><span class="tit-key">办件编号：</span>
+					<div class="search mui-clearfix" id="search">
+						<div class="mui-input-row mui-search">
+							<input type="search" id="input1" class="mui-input-clear" placeholder="请输入办件编号">
+						</div>
+						<button type="button" class="mui-btn" id="input-searchName">
+			<img src="../../img/media/voice-icon1.png"/></button>
+					</div>
+				</li>
+				<li>
+					<span class="tit-key">证件号：</span>
+					<div class="search mui-clearfix" id="search">
+						<div class="mui-input-row mui-search">
+							<input type="search" id="input2" class="mui-input-clear" placeholder="请输入证件号">
+						</div>
+						<button type="button" class="mui-btn" id="input-searchName2">
+			<img src="../../img/media/voice-icon1.png"/></button>
+					</div>
+				</li>
+				<!--<li>
+					
+				</li>
+				<li>
+					
+				</li>-->
+			</ul>
+
+		</div>
+		<div class="foo">
+			<button type="button" class="mui-btn mui-btn-primary mui-btn-block add-btn" id="searchbtn">查询</button>
+		</div>
+		<script>
+			SrcBoot.outSeaConfig();
+		</script>
+		<script>
+			seajs.use('js/bizlogic/test/demo_test_input.js');
+		</script>
+	</body>
+
+</html>

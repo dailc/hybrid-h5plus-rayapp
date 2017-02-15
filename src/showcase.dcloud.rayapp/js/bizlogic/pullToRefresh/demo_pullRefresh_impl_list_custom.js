@@ -169,7 +169,7 @@ define(function(require, exports, module) {
 				//改变最大数据量的函数
 				//如果是采用默认的数据处理,这个函数没有必要传,如果采用了自己的数据处理函数
 				//这是必须传的,否则数量永远为0,永远不能加载更多
-				changeToltalCountCallback: changeToltalCountCallback,
+				//changeToltalCountCallback: changeToltalCountCallback,
 				//请求成功,并且成功处理后会调用的成功回调方法,传入参数是成功处理后的数据
 				successRequestCallback: successRequestCallback,
 				//请求失败后的回调,可以自己处理逻辑,默认请求失败不做任何提示

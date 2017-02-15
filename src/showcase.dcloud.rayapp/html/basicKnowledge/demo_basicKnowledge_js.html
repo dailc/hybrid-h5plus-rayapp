@@ -1,0 +1,571 @@
+<!-- 
+        作者：戴荔春 
+        时间：2015-09-01
+        描述：基础知识_相关demo
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+
+	</head>
+
+	<body>
+		<script>
+			"use strict";
+			/**
+			 * 第一题:JS的基础数据类型介绍
+			 */
+			//			console.log(NaN + 1); //NaN,任何涉及到NaN的操作都会返回NaN
+			//			console.log(NaN === NaN); //false,NaN与任何值都不相等，包括NaN本身
+			//			console.log(isNaN(NaN)); //true,是NaN
+			//			console.log(isNaN('10')); //false,被转为数字10
+			//			console.log(isNaN(true)); //false,被转为数字1
+			//			console.log(isNaN(null)); //false,被转为数字0
+			//			console.log(isNaN(undefined)); //true,返回NaN
+			//			console.log(isNaN('hello')); //true,无法转换为数字
+			//			console.log(0/0);//NaN,0/0返回NaN
+			//			console.log(NaN/0);//NaN,NaN/0返回NaN
+			//			console.log(1/0);//Infinity,其它数字/0返回Infinity
+			//			console.log('1'/0);//Infinity,'1'成功转为数字
+			//			console.log('1a'/0);//NaN,'1a'转为数字失败,变为NaN
+			//			console.log(Infinity/0);//Infinity,其它数字/0返回Infinity
+
+			//			var str = true;//boolean的true
+			//			console.log(str.toString());//字符串true
+			//			console.log(str+'');//字符串true
+			//			console.log(undefined + '');//字符串undefined
+			//			console.log(undefined.toString());//报错,undefined和null没有toString()方法
+
+			/*
+			 * 第二题:javascript数据类型之基础型和复杂型
+			 */
+			//			var a = '123';
+			//这行代码同样包含了两个量，一个是a，它叫变量，一个是'123'，它是值。
+			//因为值为基础类型，所以这个值存储在栈内存中，不允许被改变
+			//比如有一个经典错误“未结束的字符串常量”，意思就是栈内存中没有找到对应字符串常量的结束符:引号
+
+			//			var a = {};
+			//			//这行代码同样包含了两个量，一个是a，它叫变量，一个是{}，它是值。
+			//			//而由于值{}不是基础类型，所以这个值得内容可以改变
+			//			//这个值包括栈内存中的内容(保存的变量标识符和指向堆内存中该对象的指针)
+			//			//以及堆内存中的内容(这个内容可以被改变)
+			//			
+			//			var a = '123';//这时候a对象指向了栈内存区的'123'常量
+			//			var b = a;//这时候b对象指向了栈内存区的'123'常量
+			//			a = '234';//这时候a对象指向了栈内存区的'234'常量
+			//			//这时候打印的是b对象的栈内存区指向'123'常量
+			//			console.log(b);//结果为123
+			//			
+			//			//这时候a对象指向的栈内存区中有一个指针,指向了堆内存区的内容
+			//			var a = {'test':'11'};
+			//			//这时候b对象和a对象栈内存区所持一样，指向了同一个堆内存区
+			//			var b = a;
+			//			//这时候堆内存区的内容被修改了
+			//			a.test = '22';
+			//			//所以打印的时候，先通过栈内存->堆内存找到内容，内容就是上面被修改后的值
+			//			console.log(JSON.stringify(b));//结果为{"test":"22"}
+
+			/*
+			 * 第三题:==和===的区别
+			 */
+			//			var a =1;
+			//			var b = true;
+			//			console.log(a == b);//true,转换为同一类型后值相等
+			//			console.log(a === b);//false,先比较类型不能,直接为false
+			//			
+			//			var a = {'test':'1'};
+			//			var b = {'test':'1'};
+			//			console.log(a == b);//false,比较指针地址,不等
+			//			console.log(a === b);//false,比较指针地址,不等
+			//			
+			//			var a = '11';
+			//			var b = new String('11');
+			//			console.log(a == b);//true,将高级类型String转化为基础类型,值相等
+			//			console.log(a === b);//false,因为类型不同，直接为false
+
+			/*
+			 * 第四题:typeof知多少
+			 */
+			//			console.log(typeof 'test');//'string'
+			//			console.log(typeof 101);//'number'
+			//			console.log(typeof true);//'boolean'
+			//			console.log(typeof undefined);//'undefined'
+			//			console.log(typeof null);//'object'
+			//			console.log(typeof function(){});//'function'
+			//			console.log(typeof {});//object
+			//			console.log(typeof new Date());//object
+
+			/*
+			 * 第五题:instanceof知多少
+			 */
+			//识别内置对象-Array,Date等
+			//			console.log([] instanceof Array);//true
+			//			console.log(new String('11') instanceof String);//true
+			//			console.log('11' instanceof String);//false,因为11是简单类型
+			//			//识别自定义对象类型以及父子类型
+			//			function Parent(x){
+			//				this.x = x;
+			//			}
+			//			function Child(x,y){
+			//				Parent.call(this,x);
+			//				this.y = y;
+			//			}
+			//			//将Child的原型指向Parent,表明继承关系,此时Child的构造变为了Parent的构造
+			//			Child.prototype =  new Parent();
+			//			//然后将构造函数换为Child自己的
+			//			Child.prototype.constructor = Child;
+			//			console.log(Child.prototype.constructor);//输出构造函数是Child自己的
+			//			var person = new Child(1,2);
+			//			console.log(person.x+','+person.y);//1,2
+			//			console.log(person instanceof Child);//true
+			//			console.log(person instanceof Parent);//true
+			//			
+			//			//不能识别简单类型,因为instanceof后面只能是基于Object对象拓展的类型
+			//			console.log(101 instanceof number);//报错，number is not defined
+
+			/*
+			 * 第六题:Object.prototype.toString知多少
+			 */
+			/**
+			 * @description 通过Object.prototype.toString来判断传入对象类别
+			 * @param {Object} obj
+			 */
+			//			function type(obj){
+			//				//slice的作用,例如本来返回[object number],slice筛选出number
+			//				return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+			//			}
+			//			console.log(type(1)); //number
+			//			console.log(type('1')); //string
+			//			console.log(type(true)); //boolean
+			//			console.log(type(undefined)); //undefined
+			//			console.log(type(null)); //null
+			//			console.log(type(new Date())); //date
+			//			console.log(type([])); //array
+			//			console.log(type({})); //object
+			//			function Test(a){
+			//				this.a = a;
+			//			}
+			//			console.log(type(new Test('1')));//object,自定义类别只能识别为object
+
+			/*
+			 * 第七题:js代码解析流程
+			 */
+
+			//			console.log(a);//undefined
+			//			var a = '1';
+			//			console.log(a);//1
+			//			//实际的执行步骤为
+			//			//var a;
+			//			//console.log(a);
+			//			//a = '1';
+			//			//console.log(a);
+			//			
+			//			var showMsg; //声明showMsg变量
+			//			console.log(showMsg);//function showMsg() {console.log("这是函数2");}
+			//			showMsg(); // 这是函数2
+			//			function showMsg() {
+			//				console.log("这是函数1");
+			//			}
+			//			showMsg(); //这是函数2
+			//			function showMsg() {
+			//				console.log("这是函数2");
+			//			}
+			//实际的执行步骤为
+			//var showMsg;
+			//function showMsg() {console.log("这是函数1");}
+			//function showMsg() {console.log("这是函数2");}
+			//console.log(showMsg);
+			//showMsg(); 
+			//showMsg();
+
+			/*
+			 * 第九题:js严格模式
+			 */
+			//在正常模式下,如果一个变量没有声明就赋值，默认是全局变量(绑到window对象上)
+			//但是在严格模式下,报错，中断脚本
+			//			test = 1;
+			//
+			//			var a = 123;
+			//			var b = {
+			//				a: 321
+			//			};
+			//			//严格模式下报错,Strict mode code may not include a with statement
+			//			with(b) {
+			//				console.log(a); // 321,因为使用了with后作用域混乱了
+			//			}
+
+			//			var escape = function() {
+			//				console.log(321)
+			//			}
+			//
+			//			var b = {
+			//				a: '发生的了空间',
+			//				escape: function() {
+			//					console.log(123)
+			//				}
+			//			};
+			//
+			//			with(b) {
+			//				escape(a); //123，优先使用了b的方法
+			//			}
+
+			//			var x = 2;　　
+			//			console.info(eval("var x = 5; x")); // 5
+			//			
+			//			// 严格模式下为2，正常模式下为5，因为严格模式不允许在eval中生成全局变量
+			//			console.info(x); 
+
+			//			function foo(){
+			//				return !this;
+			//			}
+			//			//正常模式下false,因为正常模式下this指向了全局对象window
+			//			//严格模式下为true,因为严格模式下this为undefined(禁止指向全局对象)
+			//			console.log(foo());
+			//			
+			//			function foo2(){
+			//				this.a = 1;
+			//			}
+			//			foo2();//严格模式下报错,因为严格模式下函数内部this为undefined
+
+			//			function foo(){
+			//				//报错,严格模式不允许通过caller，callee，arguments来调用自身
+			//				foo.caller;  
+			//				foo.callee;
+			//				foo.arguments; 
+			//			}
+			//			foo();
+
+			//			var o = {};
+			//　　			Object.defineProperty(o, "v", { value: 1, writable: false });
+			//　	　		o.v = 2; // 报错，不能给只读属性赋值
+
+			//			var o = {
+			//				get v() {
+			//					return 1;
+			//				}　　
+			//			};　　
+			//			// 报错，Cannot set property v of #<Object> which has only a getter
+			//			o.v = 2; 
+
+			//			var o = {};　　
+			//			Object.preventExtensions(o);　　
+			//			// 报错，Can't add property v, object is not extensible
+			//			o.v = 1; 
+
+			// 报错，Cannot delete property 'prototype' of function Object() { [native code] }
+			//delete Object.prototype; 
+
+			// 语法错误，Duplicate data property in object literal not allowed in strict mode
+			//			var o = {　　　　
+			//				p: 1,
+			//				p: 2　　
+			//			}; 
+			//语法错误
+			//Strict mode function may not have duplicate parameter names
+			//			function f(a, a, b) { 
+			//			}
+
+			//正常模式下值为十进制的64
+			//严格模式下，错误。Octal literals are not allowed in strict mode
+			//			var a = 0100;
+			//In strict mode code, 
+			//functions can only be declared at top level or immediately within another function
+			//			if(true) {　　　　
+			//				function f() {} // 语法错误
+			//			}　　
+			//			for(var i = 0; i < 5; i++) {　　　　
+			//				function f2() {} // 语法错误
+			//			}
+
+			//			arguments++; // 语法错误
+			//			　　
+			//			var obj = {set p(arguments) {}
+			//			}; // 语法错误
+			//			　　
+			//			try {} catch(arguments) {} // 语法错误
+			//			　　
+			//			function arguments() {} // 语法错误
+			//			　　
+			//			var f = new Function("arguments", "'use strict'; return 17;"); // 语法错误
+
+			//			function f(a) {　　　　
+			//				a = 2;　　　　
+			//				return [a, arguments[0]];　　
+			//			}　　
+			//			f(1); // 正常模式为[2,2]
+			//			　　
+			//			function f(a) {　　　　
+			//				"use strict";　　　　
+			//				a = 2;　　　　
+			//				return [a, arguments[0]];　　
+			//			}　　
+			//			f(1); // 严格模式为[2,1]
+
+			//			"use strict";
+			//			var f = function(i) {
+			//				if(i>3){
+			//					
+			//				}else{
+			//					console.log("-"+i);
+			//					i++;
+			//					return arguments.callee(i);
+			//				}	
+			//			};　　
+			//			f(0);// 报错
+			//						var o = Object.create(null, {
+			//							'x': {　　　　　　
+			//								value: 1,
+			//								configurable: true　　
+			//							}
+			//						});　　
+			//						delete o.x; // 删除成功,configurable为true的变量可以删除
+			//						var x;
+			//			　　			delete x; // 语法错误,严格模式下不能删除变量
+
+			//			var o = Object.create(null, {
+			//				'x': {　　　　　　
+			//					value: 1
+			//				},
+			//				'y': {　　　　　　
+			//					value: 1,
+			//					configurable: true　　
+			//				}
+			//			});　
+			//			delete o.y;// 删除成功,configurable为true的[object Object]属性可以删除
+			//			delete o.x;// 删除失败,Cannot delete property 'x' of [object Object]
+			//			
+			//			window.x = 11;
+			//			delete window.x;
+			//			//undefined,可以删除window对象的属性,结果为undefined
+			//			console.log(window.x);
+			//
+			//			var y = 11
+			//报错,不能删除var 显示创建的变量
+			//Delete of an unqualified identifier in strict mode
+			//delete y;
+
+			/*
+			 * 第十二题:new 操作符
+			 */
+			//			function Person(name){
+			//				this.name = name;
+			//				this.say = function(){
+			//					console.log("I am  " + this.name);
+			//				}
+			//			}
+			//			var one = new Person('zhangsan');
+			//			one.say();
+		</script>
+
+		<script>
+			"use strict";
+			/*
+			 * 第九题:js严格模式
+			 */
+			//			"use strict";
+			//			console.log("脚本进入严格模式");
+			//			
+			//			function test(){
+			//				"use strict";
+			//				console.log("方法进入严格模式");
+			//			}
+			/**
+			 * 笔试题
+			 */
+			//			"use strict";
+			//			var name = 'test';
+			//			var tmp = {
+			//				name: 'tmpName',
+			//				getName: function(){
+			//					console.log("+"+this.name);
+			//					return function(){
+			//						return this.name;
+			//					}
+			//				}
+			//			};	
+			//			var func = tmp.getName();
+			//			func();
+			//			func.call(tmp);
+			//			func.apply(tmp);
+
+			/**
+			 * 笔试题 以下js表达式的值
+			 */
+			//			console.log(1 + '2');
+			//			console.log(3 + 'a');;
+			//			console.log(3 + null);;
+			//			console.log(3 + undefined);;
+			//			console.log(3 + true);;
+			//			console.log(3 + 'a' - 3);;
+			//			console.log(undefined == null);;
+
+			/**
+			 * 笔试题
+			 */
+			//			"use strict";
+			//			var f = function(i) {
+			//				if(i>3){
+			//					
+			//				}else{
+			//					console.log("."+i);
+			//					i++;
+			//					return arguments.callee(i);
+			//				}
+			//			}
+			//			f(0);
+			/**
+			 * 笔试题
+			 */
+			//			var a = {
+			//				'test':'1'
+			//			};
+			//			var b = a;
+			//			var c = new Date();
+			//			if(a.test == 1){
+			//				console.log("1");
+			//				if(c instanceof Date){
+			//					console.log("11");
+			//				}else{
+			//					console.log("12");
+			//				}
+			//			}else{
+			//				console.log("2");
+			//				if(typeof c == 'Date'){
+			//					console.log("21");
+			//				}else{
+			//					console.log("22");
+			//				}
+			//			}
+
+			/**
+			 * 笔试题
+			 */
+			//		var a = {
+			//			'test':'1'
+			//		};
+			//		var b;
+			//		function foo(tmp){
+			//			tmp = tmp || {};
+			//			tmp.test = '101';
+			//		}
+			//		foo(a);
+			//		foo(b);
+			//		console.log(a.test);
+			//		console.log(b.test);
+			//			function type(obj) {
+			//				//slice的作用,例如本来返回[object number],slice筛选出number
+			//				return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+			//			}
+			//
+			//			function getPrototypeChain(object) {
+			//				var protoChain = [];
+			//				while(object = object.__proto__) {
+			//					protoChain.push(object);
+			//					
+			//				}
+			//				protoChain.push(null);
+			//				return protoChain;
+			//			}
+			//
+			//			var prototypeChain = getPrototypeChain(function(){});
+			//			//console.log(prototypeChain);
+			//			console.log(Object.__proto__);
+			/**
+			 * 第十四题: Object.create
+			 */
+			//			var obj = {
+			//				name:'obj',
+			//				say:function(){
+			//					console.log(this.name);
+			//				}
+			//			};
+			//			var newObj = Object.create(obj, {
+			//				name:{
+			//					value: 'new'
+			//				},
+			//				t1: {
+			//					value: 't1',
+			//					writable: true
+			//				},
+			//				bar: {
+			//					configurable: false,
+			//					get: function() {
+			//						return bar;
+			//					},
+			//					set: function(value) {
+			//						bar = value
+			//					}
+			//				}
+			//			});
+			//			//输出new
+			//			newObj.say();
+
+			/**
+			 * 第十五题: Object.create与new Object的区别
+			 */
+			//第一种：
+			//			var a = {
+			//				x: 1
+			//			};
+			//			var b = Object.create(a);
+			//			console.log(JSON.stringify(b)); //输出：{};
+			//			console.log(JSON.stringify(b.__proto__)); //输出：{x:1}
+			//			console.log(b===a);//false
+			//			//第二种：
+			//			var b = new Object(a)
+			//			console.log(JSON.stringify(b)); //输出：{x:1}
+			//			console.log(JSON.stringify(b.__proto__)); //输出：{}
+			//			console.log(b===a);//true
+			//			var b = new Object()
+			//			console.log(JSON.stringify(b)); //输出：{}
+			//			//第三种
+			//			function foo(){
+			//				this.x = 1;
+			//			}
+			//			var b = new foo();
+			//			console.log(b.__proto__ === foo.prototype);//true
+
+			//注意区分__proto__和prototype
+
+			//			"use strict";
+			//			function b(x,y,a){
+			//				arguments[2] = 10;
+			//				alert(a);
+			//			}
+			//			//严格模式为3
+			//			//混杂模式为10
+			//			b(1,2,3);
+			//			b(1,2);//undefined
+
+			//			"use strict1";
+			//			function a(){
+			//				alert(this);
+			//			}
+			//			//严格模式下为null
+			//			//混杂模式为弹出window对象,即[object Window]
+			//			a.call(null);
+			//			//严格模式下为undefined
+			//			//混杂模式为弹出window对象,即[object Window]
+			//			a();
+
+			//			function f(){return this;}
+			//			function f2(){return f2;}
+			//			console.log(new f() instanceof f);//true
+			//			console.log(new f2() instanceof f2);//false
+			/**
+			 * 浮点数
+			 */
+			var a = 0.3;
+			var b = 0.2;
+			var c = 0.1;
+			//浮点数有误差,所以并不会相等
+			console.log(a-b === b-c);//false
+			console.log(a-b === 0.1);//false
+		</script>
+	</body>
+
+</html>

@@ -74,7 +74,7 @@ define(function(require, exports, module) {
 	 * @return {Boolean} true or false
 	 */
 	exports.isPhoneNumber = function(targetStr) {
-		var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+		var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/;
 		return checkReg(reg, targetStr);
 	};
 	/**

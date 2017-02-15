@@ -40,7 +40,7 @@ define(function(require, exports, module) {
 				var self = this;
 				if(self.options&&self.options.otherOptions&&self.options.otherOptions.searchSelector){
 					//搜索
-					mui('#pullrefresh').on('change', self.options.otherOptions.searchSelector, function() {
+					mui('.mui-content').on('change', self.options.otherOptions.searchSelector, function() {
 						self.searchAction();
 					});
 				}

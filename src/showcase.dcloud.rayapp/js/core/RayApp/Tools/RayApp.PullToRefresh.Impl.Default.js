@@ -256,38 +256,49 @@ define(function(require, exports, module) {
 			self.errorRequest(null, null, '请求url为空!');
 			return;
 		}
-		var requestData = {};
+		
+		var next = function(requestData) {
+			var url = "";
+			if(typeof(self.options.bizlogic.getUrl) == "function") {
+				url = self.options.bizlogic.getUrl();
+			} else {
+				url = self.options.bizlogic.getUrl;
+			}
+			mui.ajax(url, {
+				data: requestData,
+				dataType: "json",
+				timeout: self.options.bizlogic.requestTimeOut,
+				type: self.options.bizlogic.ajaxSetting.requestType,
+				//接受的头
+				accepts: self.options.bizlogic.ajaxSetting.accepts,
+				//自定义头部
+				headers: self.options.bizlogic.ajaxSetting.headers,
+				//contentType
+				contentType: self.options.bizlogic.ajaxSetting.contentType,
+				success: function(response) {
+					self.successRequest(response);
+				},
+				error: function(xhr, status) {
+					self.errorRequest(xhr, status, '请求失败!');
+				}
+			});
+		};
+		
 		if(self.options.bizlogic.getRequestDataCallback) {
-			requestData = self.options.bizlogic.getRequestDataCallback(self.currPage);
+			var requestData = self.options.bizlogic.getRequestDataCallback(self.currPage,function(requestData){
+				next(requestData);
+			});
+			if(requestData !== undefined) {
+				next(requestData);
+			}
+			
 		} else {
 			if(self.options.isDebug) {
 				console.warn('warning***请注意getData不存在,默认数据为空');
 			}
+			next();
 		}
-		var url = "";
-		if(typeof(self.options.bizlogic.getUrl) == "function") {
-			url = self.options.bizlogic.getUrl();
-		} else {
-			url = self.options.bizlogic.getUrl;
-		}
-		mui.ajax(url, {
-			data: requestData,
-			dataType: "json",
-			timeout: self.options.bizlogic.requestTimeOut,
-			type: self.options.bizlogic.ajaxSetting.requestType,
-			//接受的头
-			accepts: self.options.bizlogic.ajaxSetting.accepts,
-			//自定义头部
-			headers: self.options.bizlogic.ajaxSetting.headers,
-			//contentType
-			contentType: self.options.bizlogic.ajaxSetting.contentType,
-			success: function(response) {
-				self.successRequest(response);
-			},
-			error: function(xhr, status) {
-				self.errorRequest(xhr, status, '请求失败!');
-			}
-		});
+
 	};
 	/**
 	 * @description 请求失败回调
@@ -460,7 +471,7 @@ define(function(require, exports, module) {
 		self.loadingDown = false;
 		self.loadingUp = false;
 	};
-	
+
 	/**
 	 * @description 清空容器
 	 */

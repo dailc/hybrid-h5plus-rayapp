@@ -21,7 +21,8 @@ define(function(require, exports, module) {
 		//引入必备文件,下拉刷新依赖于mui与mustache
 		CommonTools.importFile([
 			'js/libs/mui.min.js',
-			'js/libs/mustache.min.js'
+			'js/libs/mustache.min.js',
+			'js/libs/epoint.moapi.v2.js'
 		], function() {
 			initPullToRefresh();
 
@@ -43,13 +44,13 @@ define(function(require, exports, module) {
 			},
 			"pullRefreshOptions": {
 				'isDebug': false,
-				'skin': 'default',
+				'skin': 'type2',
 				'bizlogic': {
 					defaultInitPageNum: 0,
 					getUrl: 'http://115.29.151.25:8012/request.php',
 					getLitemplate: '<li class="mui-table-view-cell"id="{{InfoID}}"><p class="cell-title">{{Title}}</p><p class="cell-content"><span class="cell-content-subcontent"></span><span class="cell-content-time">{{InfoDate}}</span></p></li>',
 					pageSize: 10,
-					getRequestDataCallback: function(currPage, callback) {
+					getRequestDataCallback: function(currPage, searchValue) {
 						var requestData = {};
 						//动态校验字段
 						requestData.action = 'testPullrefreshListDemoV3';
@@ -66,11 +67,7 @@ define(function(require, exports, module) {
 						//console.log('url:' + url);
 						//console.log('请求数据:' + JSON.stringify(requestData));
 						console.log("搜素值:" + window.searchValue);
-						
-						//支持同步，也支持异步，注意，异步时不允许return 否则会请求多次
-						
-						//return requestData;
-						callback&&callback(requestData);
+						return requestData;
 					},
 					onClickCallback: function(e) {
 						console.log("点击:" + this.id);
