@@ -1,0 +1,37 @@
+{
+  "name": "hybrid-h5plus-rayapp",
+  "version": "1.0.0",
+  "description": "1.同时提供框架功能的示例showcase，以及提供基于本框架开发的一些典型项目示例。  2.封装大量常用H5+功能,如5+下的download,upload,Storage,图片下载,下拉刷新,通知栏,版本更新等等 。 3.同时也封住大量常用H5功能,如日期工具类,字符集工具类,B64的转换,md5加密,h5下拉刷新,图片轮播,H5Video,LocalStorage,IndexedDB等。  4.在使用 Dcloud公司的HTML5+方案开发跨平台APP的同学可别错过了噢!",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "node_modules/.bin/gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dailc/hybrid-h5plus-rayapp.git"
+  },
+  "keywords": [
+    "html5plus"
+  ],
+  "author": "dailc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dailc/hybrid-h5plus-rayapp/issues"
+  },
+  "homepage": "https://github.com/dailc/hybrid-h5plus-rayapp#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cache": "^0.4.6",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-collector": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "merge-stream": "^1.0.1",
+    "run-sequence": "^2.1.0"
+  }
+}

@@ -2,6 +2,7 @@
  * 作者: dailc
  * 时间: 2016-06-22 
  * 描述:  gulp的一些配置,包括路径,项目层级
+ * 
  */
 (function() {
 	//项目path,默认为''代表不使用项目path
@@ -11,7 +12,7 @@
 	var src = './src' + projectPath;
 	var dest = './build' + projectPath;
 	var rev = './rev' + projectPath;
-	var isMiniJs = true;
+	var isMiniJs = false;
 	//定义的一些文件编译和输出路径,可以不用管太多
 	module.exports = {
 		//如果src前有**,目录会自动补齐

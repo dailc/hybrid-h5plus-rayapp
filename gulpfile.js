@@ -1,3 +1,4 @@
+// 修复 gulp-uglify except不可用的bug，需要改成reserved
 var config = require('./config');
 var gulp = require('gulp');
 var minifyCss = require('gulp-clean-css'); //- 压缩CSS为一行；
@@ -132,7 +133,7 @@ gulp.task('dealCoreJs', function() {
 		.pipe(uglify({
 			//mangle: true,//类型：Boolean 默认：true 是否修改变量名
 			mangle: {
-				except: ['require', 'exports', 'module', '$']
+				reserved: ['require', 'exports', 'module', '$']
 			} //排除混淆关键字
 		}))
 		.pipe(rev())
@@ -154,7 +155,7 @@ gulp.task('dealBizlogicJs', function() {
 		.pipe(uglify({
 			//mangle: true,//类型：Boolean 默认：true 是否修改变量名
 			mangle: {
-				except: ['require', 'exports', 'module', '$']
+				reserved: ['require', 'exports', 'module', '$']
 			} //排除混淆关键字
 		}))
 		.pipe(rev())
@@ -176,7 +177,7 @@ gulp.task('dealSeaConfig', function() {
 		.pipe(uglify({
 			//mangle: true,//类型：Boolean 默认：true 是否修改变量名
 			mangle: {
-				except: ['require', 'exports', 'module', '$']
+				reserved: ['require', 'exports', 'module', '$']
 			} //排除混淆关键字
 		}))
 		.pipe(rev())
@@ -200,7 +201,7 @@ gulp.task('dealBizConfig', function() {
 		.pipe(uglify({
 			//mangle: true,//类型：Boolean 默认：true 是否修改变量名
 			mangle: {
-				except: ['require', 'exports', 'module', '$']
+				reserved: ['require', 'exports', 'module', '$']
 			} //排除混淆关键字
 		}))
 		.pipe(rev())
@@ -221,7 +222,7 @@ gulp.task('dealCacheConfigJs', function() {
 		.pipe(uglify({
 			//mangle: true,//类型：Boolean 默认：true 是否修改变量名
 			mangle: {
-				except: ['require', 'exports', 'module', '$']
+				reserved: ['require', 'exports', 'module', '$']
 			} //排除混淆关键字
 		}))
 		.pipe(rev())
@@ -284,7 +285,7 @@ gulp.task('MiniCoreJs', function() {
 		.pipe(uglify({
 			//mangle: true,//类型：Boolean 默认：true 是否修改变量名
 			mangle: {
-				except: ['require', 'exports', 'module', '$']
+				reserved: ['require', 'exports', 'module', '$']
 			} //排除混淆关键字
 		}))
 		//.pipe(rev())
