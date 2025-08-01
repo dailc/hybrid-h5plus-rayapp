@@ -1,7 +1,0 @@
-/**
- * android下的mui下拉刷新提示位置修改
- * 以各自的高度命名
- */
-.mui-pull-top-pocket {
-	top: 95px !important;
-}

@@ -1,9 +1,0 @@
-/**
- * 验证码
- */
-.verify-code-container {
-	width:100px; 
-	height: 30px; 
-	border: 1px solid #ccc; 
-	display: inline-block;
-}
